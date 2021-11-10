@@ -38,3 +38,7 @@ Twitterログイン機能
 
 欧州サッカーが好きな人たちが
 楽しめるコンテンツを作りたいから。
+
+## 画面遷移図
+
+https://www.figma.com/file/0lsKVXKsH99SSd3AS9W8yI/soccer-quiz?node-id=0%3A1
