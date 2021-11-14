@@ -42,3 +42,7 @@ Twitterログイン機能
 ## 画面遷移図
 
 https://www.figma.com/file/0lsKVXKsH99SSd3AS9W8yI/soccer-quiz?node-id=0%3A1
+
+## ER図
+
+https://drive.google.com/file/d/1hwA3yvzjZ2GMJvleLjmUpVLDfGYYV2Ww/view?usp=sharing
