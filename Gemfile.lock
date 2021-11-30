@@ -74,12 +74,14 @@ GEM
     debug_inspector (1.1.0)
     erubi (1.10.0)
     ffi (1.15.4)
+    foreman (0.87.2)
     globalid (1.0.0)
       activesupport (>= 5.0)
     i18n (1.8.11)
       concurrent-ruby (~> 1.0)
     jbuilder (2.11.3)
       activesupport (>= 5.0.0)
+    jwt (2.3.0)
     listen (3.7.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -209,7 +211,9 @@ DEPENDENCIES
   binding_of_caller
   bootsnap (>= 1.4.2)
   byebug
+  foreman
   jbuilder (~> 2.7)
+  jwt
   listen (~> 3.2)
   pg (>= 0.18, < 2.0)
   puma (~> 4.1)
