@@ -12,12 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2021_11_30_140649) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "correct_answers", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "question_id", null: false
+    t.integer "user_id", null: false
+    t.integer "question_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["question_id"], name: "index_correct_answers_on_question_id"
@@ -25,8 +22,8 @@ ActiveRecord::Schema.define(version: 2021_11_30_140649) do
   end
 
   create_table "played_questions", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "question_id", null: false
+    t.integer "user_id", null: false
+    t.integer "question_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["question_id"], name: "index_played_questions_on_question_id"
