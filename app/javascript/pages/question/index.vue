@@ -1,5 +1,5 @@
 <template>
-  <div class="col-12 col-lg-4">
+  <div class="container col-8 text-center">
     <div
       class="bg-light rounded shadow m-3 p-3"
     >クイズ一覧画面
