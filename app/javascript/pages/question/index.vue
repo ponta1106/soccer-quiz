@@ -5,6 +5,12 @@
     >クイズ一覧画面
     </div>
       <router-link
+      :to="{ name: 'UserIndex' }"
+      class="btn btn-dark shadow m-5"
+    >
+      ユーザー詳細画面へ
+    </router-link>
+      <router-link
       :to="{ name: 'TopIndex' }"
       class="btn btn-dark shadow m-5"
     >
