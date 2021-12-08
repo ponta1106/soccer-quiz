@@ -21,10 +21,7 @@ export default {
 <style>
 #app {
   color: #555;
+  background-color: #eee;
   min-height: 100vh;
-}
-p {
-  font-size: 2em;
-  text-align: center;
 }
 </style>
