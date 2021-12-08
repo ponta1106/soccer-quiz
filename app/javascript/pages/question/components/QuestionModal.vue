@@ -65,7 +65,13 @@
 
 <script>
 export default {
-  props: ['questions'],
+  name: 'QuestionModal',
+  props: {
+    questions: {
+      type: Array,
+      required: true
+    },
+  },
   data() {
     return {
       startFlg: false,

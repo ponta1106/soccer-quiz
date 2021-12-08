@@ -28,26 +28,39 @@
           >
             プレミアリーグ
           </button>
-          <Question
+          <div>
+            <button
+              class="btn btn-secondary"
+              @click="handleShowQuestionCreateModal"
+            >クイズを追加</button>
+          </div>
+          <QuestionModal
             :questions="allGenreQuestions"
             v-if="isVisibleAllGenreQuestionModal"
             @close-modal="handleCloseModal"
-          ></Question>
-          <Question
+          ></QuestionModal>
+          <QuestionModal
             :questions="championsLeagueQuestions"
             v-if="isVisibleChampionsLeagueQuestionModal"
             @close-modal="handleCloseModal"
-          ></Question>
-          <Question
+          ></QuestionModal>
+          <QuestionModal
             :questions="serieAQuestions"
             v-if="isVisibleSerieAQuestionModal"
             @close-modal="handleCloseModal"
-          ></Question>
-          <Question
+          ></QuestionModal>
+          <QuestionModal
             :questions="premierLeagueQuestions"
             v-if="isVisiblePremierLeagueQuestionModal"
             @close-modal="handleCloseModal"
-          ></Question>
+          ></QuestionModal>
+          <transition name="fade">
+            <QuestionCreateModal
+              v-if="isVisibleQuestionCreateModal"
+              @close-modal="handleCloseQuestionCreateModal"
+              @create-question="handleCreateQuestion"
+            ></QuestionCreateModal>
+          </transition>
         </div>
       </div>
     </div>
@@ -58,39 +71,42 @@
 </template>
 
 <script>
-import Question from './components/Question.vue'
-
+import QuestionModal from './components/QuestionModal.vue'
+import QuestionCreateModal from './components/QuestionCreateModal.vue'
+import { mapGetters, mapActions } from 'vuex';
 export default {
   name: 'QuestionIndex',
   components: {
-    Question,
+    QuestionModal,
+    QuestionCreateModal,
   },
   data() {
     return {
-      questions: [],
       isVisibleAllGenreQuestionModal: false,
       isVisibleChampionsLeagueQuestionModal: false,
       isVisibleSerieAQuestionModal: false,
       isVisiblePremierLeagueQuestionModal: false,
+      isVisibleQuestionCreateModal: false,
     }
   },
   computed: {
+    ...mapGetters(['questions']),
     allGenreQuestions() {
       return this.questions;
     },
     championsLeagueQuestions() {
       return this.questions.filter(question => {
-        return question.category == 0;
+        return question.category == 'champions_league';
       })
     },
     serieAQuestions() {
       return this.questions.filter(question => {
-        return question.category == 1;
+        return question.category == 'serieA';
       })
     },
     premierLeagueQuestions() {
       return this.questions.filter(question => {
-        return question.category == 2;
+        return question.category == 'premier_league';
       })
     },
   },
@@ -98,6 +114,7 @@ export default {
     this.fetchQuestions();
   },
   methods: {
+    ...mapActions(['fetchQuestions', 'createQuestion']),
     handleOpenAllGenreQuestionModal() {
       this.isVisibleAllGenreQuestionModal = true;
     },
@@ -110,16 +127,25 @@ export default {
     handleOpenPremierLeagueQuestionModal() {
       this.isVisiblePremierLeagueQuestionModal = true;
     },
+    handleShowQuestionCreateModal() {
+      this.isVisibleQuestionCreateModal = true;
+    },
     handleCloseModal() {
       this.isVisibleAllGenreQuestionModal = false;
       this.isVisibleChampionsLeagueQuestionModal = false;
       this.isVisibleSerieAQuestionModal = false;
       this.isVisiblePremierLeagueQuestionModal = false;
     },
-    fetchQuestions() {
-      this.$axios.get('questions')
-        .then(res => this.questions = res.data)
-        .catch(err => console.log(err.status));
+    handleCloseQuestionCreateModal() {
+      this.isVisibleQuestionCreateModal = false;
+    },
+    async handleCreateQuestion(question) {
+      try{
+        await this.createQuestion(question)
+        this.handleCloseQuestionCreateModal()
+      } catch(error) {
+        console.log(error)
+      }
     }
   }
 }
