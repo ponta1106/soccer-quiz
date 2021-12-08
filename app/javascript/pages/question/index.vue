@@ -1,29 +1,29 @@
 <template>
   <div class="container">
     <div class="d-flex justify-content-center">
-      <div class="col-6 bg-light rounded shadow m-3 p-3">
+      <div class="col-8 bg-light rounded shadow m-3 p-3">
         <h3 class="text-center">クイズ選択画面</h3>
-        <div class="de-flex">
+        <div class="d-flex flex-column">
           <button
-            class="btn btn-dark m-2"
+            class="btn btn-secondary p-2 m-2"
             @click="handleOpenAllGenreQuestionModal"
           >
             オールジャンル
           </button>
           <button
-            class="btn btn-dark m-2"
+            class="btn btn-secondary p-2 m-2"
             @click="handleOpenChampionsLeagueQuestionModal"
           >
             チャンピオンズリーグ
           </button>
           <button
-            class="btn btn-dark m-2"
+            class="btn btn-secondary p-2 m-2"
             @click="handleOpenSerieAQuestionModal"
           >
             セリエA
           </button>
           <button
-            class="btn btn-dark m-2"
+            class="btn btn-secondary p-2 m-2"
             @click="handleOpenPremierLeagueQuestionModal"
           >
             プレミアリーグ
@@ -80,7 +80,7 @@ export default {
     },
     championsLeagueQuestions() {
       return this.questions.filter(question => {
-        return question.category == 1;
+        return question.category == 0;
       })
     },
     serieAQuestions() {
@@ -102,7 +102,7 @@ export default {
       this.isVisibleAllGenreQuestionModal = true;
     },
     handleOpenChampionsLeagueQuestionModal() {
-      this.isVisibleChampionsQuestionModal = true;
+      this.isVisibleChampionsLeagueQuestionModal = true;
     },
     handleOpenSerieAQuestionModal() {
       this.isVisibleSerieAQuestionModal = true;
@@ -112,7 +112,7 @@ export default {
     },
     handleCloseModal() {
       this.isVisibleAllGenreQuestionModal = false;
-      this.isVisibleChampionsQuestionModal = false;
+      this.isVisibleChampionsLeagueQuestionModal = false;
       this.isVisibleSerieAQuestionModal = false;
       this.isVisiblePremierLeagueQuestionModal = false;
     },
