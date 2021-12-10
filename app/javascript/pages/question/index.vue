@@ -31,7 +31,7 @@
           <button
             class="btn btn-info p-2 m-2"
             @click="handleShowQuestionCreateModal"
-          >クイズを追加</button>
+          >クイズを作成する</button>
           <QuestionModal
             :questions="allGenreQuestions"
             v-if="isVisibleAllGenreQuestionModal"
