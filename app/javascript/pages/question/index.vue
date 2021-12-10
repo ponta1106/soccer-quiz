@@ -28,10 +28,12 @@
           >
             プレミアリーグ
           </button>
-          <button
-            class="btn btn-info p-2 m-2"
-            @click="handleShowQuestionCreateModal"
-          >クイズを追加</button>
+          <div>
+            <button
+              class="btn btn-secondary"
+              @click="handleShowQuestionCreateModal"
+            >クイズを追加</button>
+          </div>
           <QuestionModal
             :questions="allGenreQuestions"
             v-if="isVisibleAllGenreQuestionModal"
