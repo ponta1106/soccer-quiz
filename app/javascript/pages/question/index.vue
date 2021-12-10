@@ -84,7 +84,7 @@ export default {
       isVisibleChampionsLeagueQuestionModal: false,
       isVisibleSerieAQuestionModal: false,
       isVisiblePremierLeagueQuestionModal: false,
-      isVisibleQuestionCreateModal: false,
+      isVisibleQuestionCreateModal: true,
     }
   },
   computed: {
