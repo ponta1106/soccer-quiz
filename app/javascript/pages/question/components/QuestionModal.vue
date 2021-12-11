@@ -2,12 +2,18 @@
   <transition name="fade">
     <div>
       <div class="overlay">
-        <div class="modal base" role="dialog">
-          <div class="modal-dialog" role="document">
+        <div
+          class="modal base"
+          role="dialog"
+        >
+          <div
+            class="modal-dialog"
+            role="document"
+          >
             <p>このジャンルは{{ questions.length }}問あります。</p>
             <div
               class="modal-content boxes"
-              >
+            >
               <template
                 v-if="!startFlg"
               >
@@ -15,44 +21,79 @@
                   <button
                     class="btn btn-warning p-2 m-2"
                     @click="startFlg = true"
-                  >クイズスタート</button>
+                  >
+                    クイズスタート
+                  </button>
                   <button
-                    class="btn btn-light p-2 m-2" @click="closeModal"
-                  >閉じる</button>
+                    class="btn btn-light p-2 m-2"
+                    @click="closeModal"
+                  >
+                    閉じる
+                  </button>
                 </div>
               </template>
               <template v-else>
                 <div class="modal-header">
-                  <h5 class="modal-title">Q.{{ questions[index].title }}</h5>
+                  <h5 class="modal-title">
+                    Q.{{ questions[index].title }}
+                  </h5>
                 </div>
                 <div class="modal-body">
                   <div
                     class="d-flex flex-column"
                     @click="judgeAnswer"
                   >
-                    <button id="choice1" class="btn btn-info m-2">{{ questions[index].choice1 }}</button>
-                    <button id="choice2" class="btn btn-info m-2">{{ questions[index].choice2 }}</button>
-                    <button id="choice3" class="btn btn-info m-2">{{ questions[index].choice3 }}</button>
-                    <button id="choice4" class="btn btn-info m-2">{{ questions[index].choice4 }}</button>
+                    <button
+                      id="choice1"
+                      class="btn btn-info m-2"
+                    >
+                      {{ questions[index].choice1 }}
+                    </button>
+                    <button
+                      id="choice2"
+                      class="btn btn-info m-2"
+                    >
+                      {{ questions[index].choice2 }}
+                    </button>
+                    <button
+                      id="choice3"
+                      class="btn btn-info m-2"
+                    >
+                      {{ questions[index].choice3 }}
+                    </button>
+                    <button
+                      id="choice4"
+                      class="btn btn-info m-2"
+                    >
+                      {{ questions[index].choice4 }}
+                    </button>
                   </div>
                 </div>
                 <div
-                  class="modal-body"
                   v-if="answered"
+                  class="modal-body"
                 >
-                  <h5 class="text-center">{{ result }}</h5>
-                  <p class="p-3 bg-light">解説：{{ questions[index].explanation }}</p>
+                  <h5 class="text-center">
+                    {{ result }}
+                  </h5>
+                  <p class="p-3 bg-light">
+                    解説：{{ questions[index].explanation }}
+                  </p>
                 </div>
                 <div class="modal-footer">
                   <button
                     v-if="answered"
                     class="btn btn-warning"
                     @click="nextQuestion"
-                  >次へ</button>
+                  >
+                    次へ
+                  </button>
                   <button
                     class="btn btn-secondary"
                     @click="closeModal"
-                  >閉じる</button>
+                  >
+                    閉じる
+                  </button>
                 </div>
               </template>
             </div>

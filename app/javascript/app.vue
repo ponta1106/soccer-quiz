@@ -1,8 +1,11 @@
 <template>
-  <div id="app" class="d-flex flex-column min-vh-100">
-    <TheHeader class="mb-auto"></TheHeader>
-    <router-view></router-view>
-    <TheFooter class="mt-auto"></TheFooter>
+  <div
+    id="app"
+    class="d-flex flex-column min-vh-100"
+  >
+    <TheHeader class="mb-auto" />
+    <router-view />
+    <TheFooter class="mt-auto" />
   </div>
 </template>
 

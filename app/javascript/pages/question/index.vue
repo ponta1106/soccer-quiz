@@ -2,7 +2,9 @@
   <div class="container">
     <div class="d-flex justify-content-center">
       <div class="col-8 bg-light rounded shadow m-3 p-3">
-        <h3 class="text-center">クイズ選択画面</h3>
+        <h3 class="text-center">
+          クイズ選択画面
+        </h3>
         <div class="d-flex flex-column">
           <button
             class="btn btn-secondary p-2 m-2"
@@ -31,39 +33,46 @@
           <button
             class="btn btn-info p-2 m-2"
             @click="handleShowQuestionCreateModal"
-          >クイズを作成する</button>
+          >
+            クイズを作成する
+          </button>
           <QuestionModal
-            :questions="allGenreQuestions"
             v-if="isVisibleAllGenreQuestionModal"
+            :questions="allGenreQuestions"
             @close-modal="handleCloseModal"
-          ></QuestionModal>
+          />
           <QuestionModal
-            :questions="championsLeagueQuestions"
             v-if="isVisibleChampionsLeagueQuestionModal"
+            :questions="championsLeagueQuestions"
             @close-modal="handleCloseModal"
-          ></QuestionModal>
+          />
           <QuestionModal
-            :questions="serieAQuestions"
             v-if="isVisibleSerieAQuestionModal"
+            :questions="serieAQuestions"
             @close-modal="handleCloseModal"
-          ></QuestionModal>
+          />
           <QuestionModal
-            :questions="premierLeagueQuestions"
             v-if="isVisiblePremierLeagueQuestionModal"
+            :questions="premierLeagueQuestions"
             @close-modal="handleCloseModal"
-          ></QuestionModal>
+          />
           <transition name="fade">
             <QuestionCreateModal
               v-if="isVisibleQuestionCreateModal"
               @close-modal="handleCloseQuestionCreateModal"
               @create-question="handleCreateQuestion"
-            ></QuestionCreateModal>
+            />
           </transition>
         </div>
       </div>
     </div>
     <div class="text-center">
-      <router-link :to="{ name: 'TopIndex' }" class="btn btn-dark mt-5">戻る</router-link>
+      <router-link
+        :to="{ name: 'TopIndex' }"
+        class="btn btn-dark mt-5"
+      >
+        戻る
+      </router-link>
     </div>
   </div>
 </template>
@@ -88,7 +97,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['questions']),
+    ...mapGetters('questions', ['questions']),
     allGenreQuestions() {
       return this.questions;
     },
@@ -112,7 +121,10 @@ export default {
     this.fetchQuestions();
   },
   methods: {
-    ...mapActions(['fetchQuestions', 'createQuestion']),
+    ...mapActions('questions',[
+      'fetchQuestions',
+      'createQuestion'
+      ]),
     handleOpenAllGenreQuestionModal() {
       this.isVisibleAllGenreQuestionModal = true;
     },
