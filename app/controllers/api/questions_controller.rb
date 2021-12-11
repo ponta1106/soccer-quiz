@@ -1,4 +1,5 @@
 class Api::QuestionsController < ApplicationController
+  before_action :authenticate!
   before_action :set_question, only: [:show, :update, :destroy]
 
   def index
@@ -11,7 +12,7 @@ class Api::QuestionsController < ApplicationController
   end
 
   def create
-    @question = Question.new(question_params)
+    @question = current_user.questions.build(question_params)
 
     if @question.save
       render json: @question
