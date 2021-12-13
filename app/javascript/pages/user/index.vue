@@ -1,22 +1,22 @@
 <template>
   <div class="container col-8 text-center">
     <div
-      class="bg-light rounded shadow m-3 p-3"
+      class="rounded shadow m-3 p-3"
     >
       <h4>ユーザー詳細画面</h4>
       <p>{{ authUser.name }}</p>
       <p>{{ authUser.email }}</p>
     </div>
-      <router-link
-        :to="{ name: 'TopIndex' }"
-        class="btn btn-dark shadow m-5"
-      >
+    <router-link
+      :to="{ name: 'TopIndex' }"
+      class="btn shadow m-5"
+    >
       トップへ
     </router-link>
-      <router-link
-        :to="{ name: 'QuestionIndex' }"
-        class="btn btn-dark shadow m-5"
-      >
+    <router-link
+      :to="{ name: 'QuestionIndex' }"
+      class="btn shadow m-5"
+    >
       クイズ一覧
     </router-link>
   </div>

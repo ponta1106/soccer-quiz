@@ -1,37 +1,37 @@
 <template>
   <div class="container">
     <div class="d-flex justify-content-center">
-      <div class="col-8 bg-light rounded shadow m-3 p-3">
+      <div class="col-8 rounded shadow m-3 p-3">
         <h3 class="text-center">
           クイズ選択画面
         </h3>
         <div class="d-flex flex-column">
           <button
-            class="btn btn-secondary p-2 m-2"
+            class="btn shadow p-2 m-2"
             @click="handleOpenAllGenreQuestionModal"
           >
-            オールジャンル
+            オールジャンル：{{ allGenreQuestions.length }}問
           </button>
           <button
-            class="btn btn-secondary p-2 m-2"
+            class="btn shadow p-2 m-2"
             @click="handleOpenChampionsLeagueQuestionModal"
           >
-            チャンピオンズリーグ
+            チャンピオンズリーグ：{{ championsLeagueQuestions.length }}問
           </button>
           <button
-            class="btn btn-secondary p-2 m-2"
+            class="btn shadow p-2 m-2"
             @click="handleOpenSerieAQuestionModal"
           >
-            セリエA
+            セリエA：{{ serieAQuestions.length }}問
           </button>
           <button
-            class="btn btn-secondary p-2 m-2"
+            class="btn shadow p-2 m-2"
             @click="handleOpenPremierLeagueQuestionModal"
           >
-            プレミアリーグ
+            プレミアリーグ：{{ premierLeagueQuestions.length }}問
           </button>
           <button
-            class="btn btn-info p-2 m-2"
+            class="btn btn-secondary shadow p-2 m-2"
             @click="handleShowQuestionCreateModal"
           >
             クイズを作成する
@@ -69,7 +69,7 @@
     <div class="text-center">
       <router-link
         :to="{ name: 'TopIndex' }"
-        class="btn btn-dark mt-5"
+        class="btn shadow mt-5"
       >
         戻る
       </router-link>

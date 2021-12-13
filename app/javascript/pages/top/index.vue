@@ -8,7 +8,7 @@
       </div>
       <router-link
         :to="{ name: 'QuestionIndex' }"
-        class="btn btn-dark shadow m-5"
+        class="btn btn-secondary shadow m-5"
       >
         はじめる
       </router-link>
