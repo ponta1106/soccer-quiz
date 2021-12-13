@@ -40,6 +40,6 @@ class Api::QuestionsController < ApplicationController
   end
 
   def question_params
-    params.require(:question).permit(:title, :explanation, :answer, :category, :choice1, :choice2, :choice3, :choice4)
+    params.require(:question).permit(:title, :explanation, :answer, :category, :choice1, :choice2, :choice3, :choice4, :user_id)
   end
 end
