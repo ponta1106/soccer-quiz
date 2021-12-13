@@ -1,12 +1,17 @@
 <template>
-
-  <div id="login-form" class="container w-50">
+  <div
+    id="login-form"
+    class="container w-50"
+  >
     <div class="h3 mb-3">
       ログイン
     </div>
 
     <div class="form-group mb-3">
-      <label for="email" class="form-label">メールアドレス</label>
+      <label
+        for="email"
+        class="form-label"
+      >メールアドレス</label>
       <input
         id="email"
         v-model="user.email"
@@ -17,7 +22,10 @@
     </div>
 
     <div class="form-group mb-3">
-      <label for="password" class="form-label">パスワード</label>
+      <label
+        for="password"
+        class="form-label"
+      >パスワード</label>
       <input
         id="password"
         v-model="user.password"
@@ -29,7 +37,7 @@
 
     <button
       type="submit"
-      class="btn btn-primary"
+      class="btn btn-secondary shadow"
       @click="login"
     >
       ログイン
@@ -39,12 +47,11 @@
       :to="{ name: 'RegisterIndex' }"
     >
       <button
-        class="btn btn-secondary"
+        class="btn"
       >
         はじめての方はこちら
       </button>
     </router-link>
-
   </div>
 </template>
 

@@ -1,105 +1,97 @@
 <template>
   <transition name="fade">
-    <div>
-      <div class="overlay">
-        <div
-          class="modal base"
-          role="dialog"
-        >
+    <div id="question-modal">
+      <div class="modal">
+        <div class="modal-dialog modal-lg modal-dialog-centered ">
           <div
-            class="modal-dialog"
-            role="document"
+            class="modal-content"
           >
-            <p>このジャンルは{{ questions.length }}問あります。</p>
-            <div
-              class="modal-content boxes"
+            <template
+              v-if="!startFlg"
             >
-              <template
-                v-if="!startFlg"
-              >
-                <div class="modal-body d-flex flex-column justify-content-around p-2 m-2">
-                  <button
-                    class="btn btn-warning p-2 m-2"
-                    @click="startFlg = true"
-                  >
-                    クイズスタート
-                  </button>
-                  <button
-                    class="btn btn-light p-2 m-2"
-                    @click="closeModal"
-                  >
-                    閉じる
-                  </button>
-                </div>
-              </template>
-              <template v-else>
-                <div class="modal-header">
-                  <h5 class="modal-title">
-                    Q.{{ questions[index].title }}
-                  </h5>
-                </div>
-                <div class="modal-body">
-                  <div
-                    class="d-flex flex-column"
-                    @click="judgeAnswer"
-                  >
-                    <button
-                      id="choice1"
-                      class="btn btn-info m-2"
-                    >
-                      {{ questions[index].choice1 }}
-                    </button>
-                    <button
-                      id="choice2"
-                      class="btn btn-info m-2"
-                    >
-                      {{ questions[index].choice2 }}
-                    </button>
-                    <button
-                      id="choice3"
-                      class="btn btn-info m-2"
-                    >
-                      {{ questions[index].choice3 }}
-                    </button>
-                    <button
-                      id="choice4"
-                      class="btn btn-info m-2"
-                    >
-                      {{ questions[index].choice4 }}
-                    </button>
-                  </div>
-                </div>
-                <div
-                  v-if="answered"
-                  class="modal-body"
+              <div class="modal-body d-flex flex-column justify-content-around p-2 m-2">
+                <button
+                  class="btn btn-secondary shadow p-2 m-2"
+                  @click="startFlg = true"
                 >
-                  <h5 class="text-center">
-                    {{ result }}
-                  </h5>
-                  <p class="p-3 bg-light">
-                    解説：{{ questions[index].explanation }}
-                  </p>
-                </div>
-                <div class="modal-footer">
+                  クイズスタート
+                </button>
+                <button
+                  class="btn btn-light shadow p-2 m-2"
+                  @click="closeModal"
+                >
+                  閉じる
+                </button>
+              </div>
+            </template>
+            <template v-else>
+              <div class="modal-header">
+                <h5 class="modal-title">
+                  Q.{{ questions[currentQuestionIndex].title }}
+                </h5>
+              </div>
+              <div class="modal-body">
+                <div
+                  class="d-flex flex-column"
+                  @click="judgeAnswer"
+                >
                   <button
-                    v-if="answered"
-                    class="btn btn-warning"
-                    @click="nextQuestion"
+                    id="choice1"
+                    class="btn btn-light shadow m-2"
                   >
-                    次へ
+                    {{ questions[currentQuestionIndex].choice1 }}
                   </button>
                   <button
-                    class="btn btn-secondary"
-                    @click="closeModal"
+                    id="choice2"
+                    class="btn btn-light shadow m-2"
                   >
-                    閉じる
+                    {{ questions[currentQuestionIndex].choice2 }}
+                  </button>
+                  <button
+                    id="choice3"
+                    class="btn btn-light shadow m-2"
+                  >
+                    {{ questions[currentQuestionIndex].choice3 }}
+                  </button>
+                  <button
+                    id="choice4"
+                    class="btn btn-light shadow m-2"
+                  >
+                    {{ questions[currentQuestionIndex].choice4 }}
                   </button>
                 </div>
-              </template>
-            </div>
+              </div>
+              <div
+                v-if="answered"
+                class="modal-body"
+              >
+                <h5 class="text-center">
+                  {{ result }}
+                </h5>
+                <p class="p-3 bg-light">
+                  解説：{{ questions[currentQuestionIndex].explanation }}
+                </p>
+              </div>
+              <div class="modal-footer">
+                <button
+                  v-if="answered"
+                  class="btn btn-secondary shadow"
+                  @click="nextQuestion"
+                >
+                  次へ
+                </button>
+                <button
+                  class="btn shadow"
+                  @click="closeModal"
+                >
+                  閉じる
+                </button>
+              </div>
+            </template>
           </div>
         </div>
       </div>
+      <div class="modal-backdrop show" />
     </div>
   </transition>
 </template>
@@ -118,7 +110,7 @@ export default {
       startFlg: false,
       modal: false,
       answered: false,
-      index: 0,
+      currentQuestionIndex: 0,
       result: ''
     }
   },
@@ -126,14 +118,14 @@ export default {
     nextQuestion() {
       this.answered = false;
       this.result = '';
-      this.index++;
+      this.currentQuestionIndex++;
     },
     closeModal() {
       this.$emit('close-modal');
     },
     judgeAnswer(e) {
       this.answered = true;
-      if (this.questions[this.index].answer == e.target.id) {
+      if (this.questions[this.currentQuestionIndex].answer == e.target.id) {
         this.result = '🙆‍♂️🙆🙆‍♂️🙆🙆‍♂️🙆🙆‍♂️ 正解 🙆‍♂️🙆🙆‍♂️🙆🙆‍♂️🙆🙆‍♂️';
       } else {
         this.result = '🙅‍♂️🙅🙅‍♂️🙅🙅‍♂️🙅🙅‍♂️ 不正解 🙅‍♂️🙅🙅‍♂️🙅🙅‍♂️🙅🙅‍♂️';
@@ -144,34 +136,16 @@ export default {
 </script>
 
 <style scoped>
-.base {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: center;
-  margin-top: 50px;
-}
 
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgb(0, 0, 0, 0.5);
-}
-/* 表示/非表示はvueで制御するので最初から表示状態にする */
  .modal {
   display: block;
 }
 
-/* vueのtransitionを使わないなら不要 */
 .fade-enter-active, .fade-leave-active {
-  transition: opacity .5s;
+  transition: opacity .2s;
 }
 .fade-enter, .fade-leave-to {
   opacity: 0;
 }
+
 </style>

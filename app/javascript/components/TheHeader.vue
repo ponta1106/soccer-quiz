@@ -1,6 +1,6 @@
 <template>
   <header>
-    <nav class="navbar navbar-expand navbar-dark bg-dark justify-content-between">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between shadow">
       <div class="container">
         <router-link
           :to="{ name: 'TopIndex' }"
