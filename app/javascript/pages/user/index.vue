@@ -4,14 +4,14 @@
       class="bg-light rounded shadow m-3 p-3"
     >
       <h4>ユーザー詳細画面</h4>
-      <p>{{ users[0].name }}</p>
-      <p>{{ users[0].email }}</p>
+      <p>{{ authUser.name }}</p>
+      <p>{{ authUser.email }}</p>
     </div>
       <router-link
         :to="{ name: 'TopIndex' }"
         class="btn btn-dark shadow m-5"
       >
-      トップ
+      トップへ
     </router-link>
       <router-link
         :to="{ name: 'QuestionIndex' }"
@@ -23,17 +23,12 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex"
+
 export default {
   name: 'UserIndex',
-  data() {
-    return {
-      users: [
-        {
-          name: 'ponta',
-          email: 'example.com'
-        }
-      ]
-    }
-  }
+  computed: {
+    ...mapGetters("users", ["authUser"])
+  },
 }
 </script>

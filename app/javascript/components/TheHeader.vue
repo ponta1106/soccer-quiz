@@ -1,48 +1,51 @@
 <template>
   <header>
     <nav class="navbar navbar-expand navbar-dark bg-dark justify-content-between">
-      <div class="container m-2">
+      <div class="container">
         <router-link
           :to="{ name: 'TopIndex' }"
           class="navbar-brand mb-0 h1"
         >
           欧州サッカークイズ
         </router-link>
+        <ul class="navbar-nav">
+          <template v-if="!authUser">
+            <li class="nav-item active">
+              <router-link
+                :to="{ name: 'RegisterIndex' }"
+                class="nav-link"
+              >
+                ユーザー登録
+              </router-link>
+            </li>
+            <li class="nav-item active">
+              <router-link
+                :to="{ name: 'LoginIndex' }"
+                class="nav-link"
+              >
+                ログイン
+              </router-link>
+            </li>
+          </template>
+          <template v-else>
+            <router-link
+              :to="{ name: 'UserIndex' }"
+              class="nav-link"
+            >
+              {{ authUser.name }}
+            </router-link>
+            <li class="nav-item">
+              <router-link
+                to="#"
+                class="nav-link"
+                @click.native="handleLogout"
+              >
+                ログアウト
+              </router-link>
+            </li>
+          </template>
+        </ul>
       </div>
-      <ul class="navbar-nav">
-        <template v-if="!authUser">
-          <li class="nav-item active">
-            <router-link
-              :to="{ name: 'RegisterIndex' }"
-              class="nav-link"
-            >
-              ユーザー登録
-            </router-link>
-          </li>
-          <li class="nav-item active">
-            <router-link
-              :to="{ name: 'LoginIndex' }"
-              class="nav-link"
-            >
-              ログイン
-            </router-link>
-          </li>
-        </template>
-        <template v-else>
-          <span
-            class="nav-link"
-          >{{ authUser.name }}さんいらっしゃいませ 🤗 </span>
-          <li class="nav-item">
-            <router-link
-              to="#"
-              class="nav-link"
-              @click.native="handleLogout"
-            >
-              ログアウト
-            </router-link>
-          </li>
-        </template>
-      </ul>
     </nav>
   </header>
 </template>
