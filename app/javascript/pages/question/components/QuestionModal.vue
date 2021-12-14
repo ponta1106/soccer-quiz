@@ -79,7 +79,7 @@
                   >
                 </template>
                 <p class="p-3 bg-light">
-                  解説：{{ questions[currentQuestionIndex].explanation }}
+                  {{ questions[currentQuestionIndex].explanation }}
                 </p>
               </div>
               <div class="modal-footer">
