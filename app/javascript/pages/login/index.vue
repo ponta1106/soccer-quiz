@@ -71,7 +71,7 @@ export default {
   methods: {
     ...mapActions("users", [
       "loginUser",
-      "fetchUser",
+      "fetchAuthUser",
     ]),
     async login() {
       try {

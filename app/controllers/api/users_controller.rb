@@ -1,5 +1,9 @@
 class Api::UsersController < ApplicationController
   before_action :authenticate!, only: %i[me]
+  def index
+    @users = User.all
+    render json: @users
+  end
   def create
     user = User.new(user_params)
 

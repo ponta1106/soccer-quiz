@@ -7,6 +7,11 @@
       <p>{{ authUser.name }}</p>
       <p>{{ authUser.email }}</p>
     </div>
+    <h4>登録ユーザー一覧</h4>
+    <p
+      v-for="user in users"
+      :key="user.id"
+    >{{ user.name }}</p>
     <router-link
       :to="{ name: 'TopIndex' }"
       class="btn shadow m-5"
@@ -23,12 +28,18 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex"
+import { mapGetters, mapActions } from "vuex"
 
 export default {
   name: 'UserIndex',
   computed: {
-    ...mapGetters("users", ["authUser"])
+    ...mapGetters("users", ["users", "authUser"])
+  },
+  methods: {
+    ...mapActions("users", ["fetchUsers"])
+  },
+  created() {
+    this.fetchUsers();
   },
 }
 </script>
