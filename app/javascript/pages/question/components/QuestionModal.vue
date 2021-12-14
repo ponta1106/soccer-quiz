@@ -34,6 +34,7 @@
                 <div
                   class="d-flex flex-column"
                   @click="judgeAnswer"
+                  v-if="!answered"
                 >
                   <button
                     id="choice1"
@@ -63,29 +64,57 @@
               </div>
               <div
                 v-if="answered"
-                class="modal-body"
+                class="modal-body container text-center"
               >
-                <h5 class="text-center">
+                <h5 style="font-size: 32px;">
                   {{ result }}
                 </h5>
+                <template
+                  v-if="!correct_answer"
+                >
+                  <img
+                    src="../../../assets/images/hirayama.png"
+                    alt="show-results"
+                    style="width: 300px;"
+                  >
+                </template>
                 <p class="p-3 bg-light">
                   解説：{{ questions[currentQuestionIndex].explanation }}
                 </p>
               </div>
               <div class="modal-footer">
-                <button
-                  v-if="answered"
-                  class="btn btn-secondary shadow"
-                  @click="nextQuestion"
+                <template
+                  v-if="question_results.length == questions.length"
                 >
-                  次へ
-                </button>
+                  <button
+                    class="btn btn-success shadow"
+                    @click="handleShowQuestionResultsModal"
+                  >
+                    結果発表
+                  </button>
+                </template>
+                <template
+                  v-else
+                >
+                  <button
+                    v-if="answered"
+                    class="btn btn-secondary shadow"
+                    @click="nextQuestion"
+                  >
+                    次へ
+                  </button>
+                </template>
                 <button
                   class="btn shadow"
                   @click="closeModal"
                 >
                   閉じる
                 </button>
+                <QuestionResultsModal
+                  v-if="isVisibleQuestionResultsModal"
+                  :question_results="question_results"
+                  @close-question-results-modal="handleCloseQuestionResultsModal"
+                ></QuestionResultsModal>
               </div>
             </template>
           </div>
@@ -97,8 +126,13 @@
 </template>
 
 <script>
+import QuestionResultsModal from './QuestionResultsModal.vue'
+
 export default {
   name: 'QuestionModal',
+  components: {
+    QuestionResultsModal
+  },
   props: {
     questions: {
       type: Array,
@@ -107,28 +141,47 @@ export default {
   },
   data() {
     return {
-      startFlg: false,
+      result: '',
       modal: false,
+      startFlg: false,
       answered: false,
+      question_results: [],
+      correct_answer: true,
       currentQuestionIndex: 0,
-      result: ''
+      isVisibleQuestionResultsModal: false,
+    }
+  },
+  computed: {
+    numberOfQuestions() {
+      return this.questions.length;
     }
   },
   methods: {
     nextQuestion() {
-      this.answered = false;
       this.result = '';
+      this.answered = false;
       this.currentQuestionIndex++;
     },
     closeModal() {
       this.$emit('close-modal');
     },
+    handleCloseQuestionResultsModal() {
+      this.isVisibleQuestionResultsModal = false;
+      this.closeModal();
+    },
+    handleShowQuestionResultsModal() {
+      this.isVisibleQuestionResultsModal = true;
+    },
     judgeAnswer(e) {
       this.answered = true;
       if (this.questions[this.currentQuestionIndex].answer == e.target.id) {
-        this.result = '🙆‍♂️🙆🙆‍♂️🙆🙆‍♂️🙆🙆‍♂️ 正解 🙆‍♂️🙆🙆‍♂️🙆🙆‍♂️🙆🙆‍♂️';
+        this.result = '🙆‍♂️🙆‍♀️ 正解 🙆‍♂️🙆‍♀️';
+        this.correct_answer = true;
+        this.question_results.push('correct');
       } else {
-        this.result = '🙅‍♂️🙅🙅‍♂️🙅🙅‍♂️🙅🙅‍♂️ 不正解 🙅‍♂️🙅🙅‍♂️🙅🙅‍♂️🙅🙅‍♂️';
+        this.result = '🙅‍♂️🙅‍♀️ 不正解 🙅‍♂️🙅‍♀️';
+        this.correct_answer = false;
+        this.question_results.push('incorrect');
       }
     }
   }
