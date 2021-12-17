@@ -25,6 +25,6 @@ export default {
 #app {
   color: #555;
   min-height: 100vh;
-  background-color: #e5e2df;
+  background-color: slategray;
 }
 </style>
