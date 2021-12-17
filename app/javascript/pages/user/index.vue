@@ -6,12 +6,14 @@
       <h4>ユーザー詳細画面</h4>
       <p>{{ authUser.name }}</p>
       <p>{{ authUser.email }}</p>
+      <h4>{{ authUser.name }}さんが作成した問題一覧</h4>
+      <p
+        v-for="question in authUser_questions"
+        :key="question.id"
+      >
+       {{ question.title }}
+      </p>
     </div>
-    <h4>登録ユーザー一覧</h4>
-    <p
-      v-for="user in users"
-      :key="user.id"
-    >{{ user.name }}</p>
     <router-link
       :to="{ name: 'TopIndex' }"
       class="btn shadow m-5"
@@ -33,13 +35,21 @@ import { mapGetters, mapActions } from "vuex"
 export default {
   name: 'UserIndex',
   computed: {
-    ...mapGetters("users", ["users", "authUser"])
+    ...mapGetters("users", ["users", "authUser"]),
+    ...mapGetters('questions', ['questions']),
+    authUser_questions() {
+      return this.questions.filter(question => {
+        return question.user_id == this.authUser.id
+      })
+    }
   },
   methods: {
-    ...mapActions("users", ["fetchUsers"])
+    ...mapActions("users", ["fetchUsers"]),
+    ...mapActions('questions',['fetchQuestions']),
   },
   created() {
     this.fetchUsers();
+    this.fetchQuestions();
   },
 }
 </script>
