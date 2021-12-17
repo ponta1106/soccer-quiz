@@ -21,7 +21,7 @@ const router = new Router ({
       path: "/questions",
       component: QuestionIndex,
       name: "QuestionIndex",
-      // meta: { requiredAuth: true },
+      meta: { requiredAuth: true },
     },
     {
       path: "/users",
