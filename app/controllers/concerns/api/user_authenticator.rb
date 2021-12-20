@@ -6,7 +6,7 @@ module Api::UserAuthenticator
     return unless bearer_token
 
     payload, = User.decode bearer_token
-    @current_user = User.find_by(id: payload['user_id'])
+    @current_user ||= User.find_by(id: payload['user_id'])
   rescue JWT::ExpiredSignature
     nil
   end
