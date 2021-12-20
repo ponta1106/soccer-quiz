@@ -3,6 +3,9 @@ import App from '../app.vue'
 import router from '../router'
 import store from '../store'
 import axios from '../plugins/axios'
+import 'jquery/dist/jquery.js'
+import 'popper.js/dist/popper.js'
+import 'bootstrap/dist/js/bootstrap'
 import 'bootstrap/dist/css/bootstrap.css'
 
 Vue.config.productionTip = false
