@@ -1,5 +1,5 @@
 class Api::QuestionsController < ApplicationController
-  before_action :authenticate!
+  # before_action :authenticate!
   before_action :set_question, only: [:show, :update, :destroy]
 
   def index
