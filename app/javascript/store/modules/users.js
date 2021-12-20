@@ -27,8 +27,8 @@ const actions = {
       })
       .catch(err => console.log(err.response));
   },
-  async loginUser({ commit }, authUser) {
-    const sessionsResponse = await axios.post('sessions', authUser)
+  async loginUser({ commit }, user) {
+    const sessionsResponse = await axios.post('sessions', user)
     localStorage.auth_token = sessionsResponse.data.token
     axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.auth_token}`
 
