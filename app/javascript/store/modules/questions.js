@@ -14,7 +14,13 @@ const mutations = {
   },
   addQuestion: (state, question) => {
     state.questions.push(question)
-  }
+  },
+  updateQuestion: (state, updateQuestion) => {
+    const index = state.questions.findIndex(question => {
+      return question.id == updateQuestion.id
+    })
+    state.questions.splice(index, 1, updateQuestion)
+  },
 };
 
 const actions = {
@@ -31,6 +37,12 @@ const actions = {
         commit('addQuestion', res.data)
       })
   },
+  updateQuestion({ commit }, question) {
+    return axios.patch(`questions/${question.id}`, question)
+      .then(res => {
+        commit('updateQuestion', res.data)
+      })
+  }
 };
 
 export default {
