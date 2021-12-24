@@ -4,10 +4,10 @@
       <div class="modal">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
+            <div class="modal-header">
+              <h5>クイズ編集画面</h5>
+            </div>
             <div class="modal-body">
-              <div class="modal-header">
-                <h5>クイズ編集画面</h5>
-              </div>
               <div class="row">
                 <div class="left-section col-md m-2">
                   <div class="form-group mt-3">
@@ -107,20 +107,20 @@
                   </div>
                 </div>
               </div>
-              <div class="d-flex modal-footer justify-content-between mt-3">
-                <button
-                  class="btn btn-secondary shadow"
-                  @click="handleUpdateQuestion"
-                >
-                  更新
-                </button>
-                <button
-                  class="btn shadow"
-                  @click="handleCloseModal"
-                >
-                  閉じる
-                </button>
-              </div>
+            </div>
+            <div class="d-flex modal-footer justify-content-between mt-3">
+              <button
+                class="btn btn-secondary shadow"
+                @click="handleUpdateQuestion"
+              >
+                更新する
+              </button>
+              <button
+                class="btn shadow"
+                @click="handleCloseModal"
+              >
+                閉じる
+              </button>
             </div>
           </div>
         </div>

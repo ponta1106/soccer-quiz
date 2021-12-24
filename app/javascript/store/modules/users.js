@@ -16,7 +16,14 @@ const mutations = {
   },
   setAuthUser: (state, authUser) => {
     state.authUser = authUser
-  }
+  },
+  updateUser: (state, updateUser) => {
+    const index = state.users.findIndex
+    (user => {
+      return user.id == updateUser.id
+    })
+    state.users.splice(index, 1, updateUser)
+  },
 };
 
 const actions = {
@@ -58,6 +65,12 @@ const actions = {
       commit('setAuthUser', null)
       return null
     }
+  },
+  updateUser({ commit }, user) {
+    return axios.patch(`users/${user.id}`, user)
+    .then(res => {
+      commit('updateUser', res.data)
+    })
   }
 }
 
