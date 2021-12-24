@@ -3,18 +3,28 @@
     <div
       class="rounded shadow m-3 p-3"
     >
-      <h4>ユーザー詳細画面</h4>
+      <h5>ユーザー詳細画面</h5>
       <p>{{ authUser.name }}</p>
       <p>{{ authUser.email }}</p>
-    </div>
-    <div>
-      <h4>{{ authUser.name }}さんが作成した問題一覧</h4>
+      <button
+      class="btn btn-success"
+      @click="handleShowUserEditModal(authUser)"
+      >ユーザーを編集</button>
+      <transition name="fade">
+        <UserEditModal
+          v-if="isVisibleUserEditModal"
+          :user="userEdit"
+          @close-modal="handleCloseUserEditModal"
+          @update-user="handleUpdateUser"
+        />
+      </transition>
     </div>
     <div
       class="rounded shadow m-3 p-3"
       v-for="question in authUser_questions"
       :key="question.id"
     >
+      <h5>{{ authUser.name }}さんが作成した問題一覧</h5>
       <p>{{ question.title }}</p>
       <button
       class="btn btn-success"
@@ -45,45 +55,69 @@
 </template>
 
 <script>
-import QuestionEditModal from './components/QuestionEditModal'
+import QuestionEditModal from '../question/components/QuestionEditModal'
+import UserEditModal from './components/UserEditModal'
+
 import { mapGetters, mapActions } from "vuex"
 
 export default {
   name: 'UserIndex',
   components: {
-    QuestionEditModal
+    QuestionEditModal,
+    UserEditModal
   },
   data() {
     return {
       questionEdit: {},
+      userEdit: {},
       isVisibleQuestionEditModal: false,
+      isVisibleUserEditModal: false,
     }
   },
   computed: {
-    ...mapGetters("users", ["users", "authUser"]),
+    ...mapGetters("users", ["authUser", "users"]),
     ...mapGetters('questions', ['questions']),
     authUser_questions() {
       return this.questions.filter(question => {
         return question.user_id == this.authUser.id
       })
-    }
+    },
+    // current_user() {
+    //   return this.users.filter(user => {
+    //     return user.id == this.authUser.id
+    //   })
+    // },
   },
   methods: {
-    ...mapActions("users", ["fetchUsers"]),
+    ...mapActions("users", [
+      'updateUser',
+      'fetchUsers'
+      ]),
     ...mapActions('questions',[
       'fetchQuestions',
       'updateQuestion'
       ]),
-    handleShowQuestionEditModal(question) {
-      this.isVisibleQuestionEditModal = true;
-      this.questionEdit = question;
+    handleCloseUserEditModal() {
+      this.isVisibleUserEditModal = false;
     },
     handleCloseQuestionEditModal() {
       this.isVisibleQuestionEditModal = false;
     },
+    handleShowUserEditModal(user) {
+      this.userEdit = Object.assign({}, user);
+      this.isVisibleUserEditModal = true;
+    },
     handleShowQuestionEditModal(question) {
       this.questionEdit = Object.assign({}, question);
       this.isVisibleQuestionEditModal = true;
+    },
+    async handleUpdateUser(user) {
+      try {
+      await this.updateUser(user);
+      this.handleCloseUserEditModal();
+      } catch (error) {
+        console.log(error);
+      }
     },
     async handleUpdateQuestion(question) {
       try {
@@ -92,11 +126,11 @@ export default {
       } catch (error) {
         console.log(error);
       }
-    }
+    },
   },
   created() {
     this.fetchUsers();
     this.fetchQuestions();
-  },
+  }
 }
 </script>
