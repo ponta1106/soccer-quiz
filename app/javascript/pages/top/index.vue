@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <div class="text-center">
       <h3>ガチ勢じゃないとわからない？</h3>
       <h2>欧州サッカークイズ</h2>
