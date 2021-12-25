@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="d-flex justify-content-center">
-      <div class="col-8 rounded shadow m-3 p-3">
+      <div class="col-12 col-lg-8 rounded shadow m-3 p-3">
         <h3 class="text-center">
           クイズ選択画面
         </h3>

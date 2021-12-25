@@ -1,5 +1,5 @@
 <template>
-  <div class="container col-8 text-center">
+  <div class="container text-center col-lg-8">
     <div class="h3 m-5">
       ユーザー詳細
     </div>
