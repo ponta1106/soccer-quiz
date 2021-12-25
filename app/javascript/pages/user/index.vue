@@ -1,30 +1,33 @@
 <template>
   <div class="container col-8 text-center">
+    <div class="h3 m-5">
+      ユーザー詳細
+    </div>
     <div
       class="rounded shadow m-3 p-3"
     >
-      <h5>ユーザー詳細画面</h5>
       <p>{{ authUser.name }}</p>
       <p>{{ authUser.email }}</p>
       <button
       class="btn btn-success"
-      @click="handleShowUserEditModal(authUser)"
+      @click="handleShowUserEditModal"
       >ユーザーを編集</button>
       <transition name="fade">
         <UserEditModal
           v-if="isVisibleUserEditModal"
-          :user="userEdit"
           @close-modal="handleCloseUserEditModal"
           @update-user="handleUpdateUser"
         />
       </transition>
     </div>
+    <div class="h3 m-5">
+      {{ authUser.name }}さんが作成した問題一覧
+    </div>
     <div
       class="rounded shadow m-3 p-3"
-      v-for="question in authUser_questions"
+      v-for="question in isAuthUserQuestions"
       :key="question.id"
     >
-      <h5>{{ authUser.name }}さんが作成した問題一覧</h5>
       <p>{{ question.title }}</p>
       <button
       class="btn btn-success"
@@ -69,24 +72,18 @@ export default {
   data() {
     return {
       questionEdit: {},
-      userEdit: {},
       isVisibleQuestionEditModal: false,
       isVisibleUserEditModal: false,
     }
   },
   computed: {
-    ...mapGetters("users", ["authUser", "users"]),
+    ...mapGetters("users", ["authUser"]),
     ...mapGetters('questions', ['questions']),
-    authUser_questions() {
+    isAuthUserQuestions() {
       return this.questions.filter(question => {
         return question.user_id == this.authUser.id
       })
-    },
-    // current_user() {
-    //   return this.users.filter(user => {
-    //     return user.id == this.authUser.id
-    //   })
-    // },
+    }
   },
   methods: {
     ...mapActions("users", [
@@ -103,21 +100,12 @@ export default {
     handleCloseQuestionEditModal() {
       this.isVisibleQuestionEditModal = false;
     },
-    handleShowUserEditModal(user) {
-      this.userEdit = Object.assign({}, user);
+    handleShowUserEditModal() {
       this.isVisibleUserEditModal = true;
     },
     handleShowQuestionEditModal(question) {
       this.questionEdit = Object.assign({}, question);
       this.isVisibleQuestionEditModal = true;
-    },
-    async handleUpdateUser(user) {
-      try {
-      await this.updateUser(user);
-      this.handleCloseUserEditModal();
-      } catch (error) {
-        console.log(error);
-      }
     },
     async handleUpdateQuestion(question) {
       try {
@@ -129,7 +117,6 @@ export default {
     },
   },
   created() {
-    this.fetchUsers();
     this.fetchQuestions();
   }
 }
