@@ -1,5 +1,5 @@
 <template>
-  <div class="container text-center col-lg-8">
+  <div class="container col-lg-8">
     <div class="h3 m-5">
       ユーザー詳細
     </div>
@@ -12,13 +12,10 @@
       class="btn btn-success"
       @click="handleShowUserEditModal"
       >ユーザーを編集</button>
-      <transition name="fade">
-        <UserEditModal
-          v-if="isVisibleUserEditModal"
-          @close-modal="handleCloseUserEditModal"
-          @update-user="handleUpdateUser"
-        />
-      </transition>
+      <UserEditModal
+        v-if="isVisibleUserEditModal"
+        @close-modal="handleCloseUserEditModal"
+      />
     </div>
     <div class="h3 m-5">
       {{ authUser.name }}さんが作成した問題一覧
@@ -33,14 +30,13 @@
       class="btn btn-success"
       @click="handleShowQuestionEditModal(question)"
       >クイズを編集</button>
-      <transition name="fade">
-        <QuestionEditModal
-          v-if="isVisibleQuestionEditModal"
-          :question="questionEdit"
-          @close-modal="handleCloseQuestionEditModal"
-          @update-question="handleUpdateQuestion"
-        />
-      </transition>
+      <QuestionEditModal
+        v-if="isVisibleQuestionEditModal"
+        :question="questionEdit"
+        @close-modal="handleCloseQuestionEditModal"
+        @update-question="handleUpdateQuestion"
+        @delete-question="handleDeleteQuestion"
+      />
     </div>
     <router-link
       :to="{ name: 'TopIndex' }"
@@ -92,7 +88,8 @@ export default {
       ]),
     ...mapActions('questions',[
       'fetchQuestions',
-      'updateQuestion'
+      'updateQuestion',
+      'deleteQuestion',
       ]),
     handleCloseUserEditModal() {
       this.isVisibleUserEditModal = false;
@@ -110,6 +107,14 @@ export default {
     async handleUpdateQuestion(question) {
       try {
       await this.updateQuestion(question);
+      this.handleCloseQuestionEditModal();
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    async handleDeleteQuestion(question) {
+      try {
+      await this.deleteQuestion(question);
       this.handleCloseQuestionEditModal();
       } catch (error) {
         console.log(error);

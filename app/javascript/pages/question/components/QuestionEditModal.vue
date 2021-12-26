@@ -8,7 +8,7 @@
           </div>
           <div class="modal-body">
             <div class="row">
-              <div class="left-section col-md m-2">
+              <div class="left-section col-xl">
                 <div class="form-group mt-3">
                   <label for="title">問題文</label>
                   <input
@@ -55,7 +55,7 @@
                   >
                 </div>
               </div>
-              <div class="right-section col-md m-2">
+              <div class="right-section col-xl">
                 <div class="form-group mt-3">
                   <label for="answer">答えの選択肢</label>
                   <select
@@ -115,6 +115,12 @@
               更新する
             </button>
             <button
+              class="btn btn-danger shadow"
+              @click="handleDeleteQuestion"
+            >
+              削除する
+            </button>
+            <button
               class="btn shadow"
               @click="handleCloseModal"
             >
@@ -143,6 +149,9 @@ export default {
     },
     handleUpdateQuestion() {
       this.$emit('update-question', this.question)
+    },
+    handleDeleteQuestion() {
+      this.$emit('delete-question', this.question)
     }
   }
 }

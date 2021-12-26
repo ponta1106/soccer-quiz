@@ -21,6 +21,11 @@ const mutations = {
     })
     state.questions.splice(index, 1, updateQuestion)
   },
+  deleteQuestion: (state, deleteQuestion) => {
+    state.questions = state.questions.filter(question => {
+      return question.id != deleteQuestion.id
+    })
+  }
 };
 
 const actions = {
@@ -42,7 +47,14 @@ const actions = {
       .then(res => {
         commit('updateQuestion', res.data)
       })
+  },
+  deleteQuestion({ commit }, question) {
+    return axios.delete(`questions/${question.id}`)
+      .then(res => {
+        commit('deleteQuestion', res.data)
+      })
   }
+
 };
 
 export default {
