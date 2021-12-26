@@ -1,7 +1,7 @@
 <template>
   <div
     id="login-form"
-    class="container w-50"
+    class="container"
   >
     <div class="h3 mb-3">
       ログイン
