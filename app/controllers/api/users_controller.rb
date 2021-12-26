@@ -1,5 +1,5 @@
 class Api::UsersController < ApplicationController
-  before_action :authenticate!, only: %i[me]
+  before_action :authenticate!
 
   def index
     @users = User.all
