@@ -139,11 +139,12 @@ export default {
         title: '',
         explanation: '',
         answer: '',
-        category: 0,
+        category: 'champions_league',
         choice1: '',
         choice2: '',
         choice3: '',
-        choice4: ''
+        choice4: '',
+        user_id: 1,
       }
     }
   },
