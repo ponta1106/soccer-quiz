@@ -30,14 +30,14 @@
       class="btn btn-success"
       @click="handleShowQuestionEditModal(question)"
       >クイズを編集</button>
-      <QuestionEditModal
-        v-if="isVisibleQuestionEditModal"
-        :question="questionEdit"
-        @close-modal="handleCloseQuestionEditModal"
-        @update-question="handleUpdateQuestion"
-        @delete-question="handleDeleteQuestion"
-      />
     </div>
+    <QuestionEditModal
+      v-if="isVisibleQuestionEditModal"
+      :question="questionEdit"
+      @close-modal="handleCloseQuestionEditModal"
+      @update-question="handleUpdateQuestion"
+      @delete-question="handleDeleteQuestion"
+    />
     <router-link
       :to="{ name: 'TopIndex' }"
       class="btn shadow m-5"
