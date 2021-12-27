@@ -106,16 +106,16 @@ export default {
     },
     async handleUpdateQuestion(question) {
       try {
-      await this.updateQuestion(question);
-      this.handleCloseQuestionEditModal();
+        this.handleCloseQuestionEditModal();
+        await this.updateQuestion(question);
       } catch (error) {
         console.log(error);
       }
     },
     async handleDeleteQuestion(question) {
       try {
-      await this.deleteQuestion(question);
-      this.handleCloseQuestionEditModal();
+        this.handleCloseQuestionEditModal();
+        await this.deleteQuestion(question);
       } catch (error) {
         console.log(error);
       }
