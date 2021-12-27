@@ -85,13 +85,19 @@
                     name="category"
                   >
                     <option value="champions_league">
-                      champions_league
+                      チャンピオンズリーグ
                     </option>
                     <option value="serieA">
-                      serieA
+                      セリエA
                     </option>
                     <option value="premier_league">
-                      premier_league
+                      プレミアリーグ
+                    </option>
+                    <option value="la_liga">
+                      ラリーガ
+                    </option>
+                    <option value="others">
+                      その他
                     </option>
                   </select>
                 </div>
