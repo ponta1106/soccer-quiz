@@ -7,7 +7,6 @@ import {
 import {
   email,
   required,
-  image
 } from 'vee-validate/dist/rules';
 
 Vue.component('ValidationObserver', ValidationObserver)
@@ -45,9 +44,4 @@ extend('password_confirmed', {
     return value === target;
   },
   message: 'パスワードと一致しません'
-});
-
-extend('image', {
-  ...image,
-  message: '{_field_}は画像形式で入力してください'
 });

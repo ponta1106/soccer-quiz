@@ -6,7 +6,7 @@
     <div class="h3 mb-3">
       ユーザー登録
     </div>
-    <ValidationObserver v-slot="{ handleSubmit }">
+  <ValidationObserver v-slot="{ handleSubmit }">
     <div class="form-group mb-3">
       <ValidationProvider
         v-slot="{ errors }"
