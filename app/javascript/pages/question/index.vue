@@ -8,12 +8,6 @@
         <div class="d-flex flex-column">
           <button
             class="btn shadow p-2 m-2"
-            @click="handleOpenAllGenreQuestionModal"
-          >
-            オールジャンル：{{ allGenreQuestions.length }}問
-          </button>
-          <button
-            class="btn shadow p-2 m-2"
             @click="handleOpenChampionsLeagueQuestionModal"
           >
             チャンピオンズリーグ：{{ championsLeagueQuestions.length }}問
@@ -48,11 +42,6 @@
           >
             クイズを作成する
           </button>
-          <QuestionModal
-            v-if="isVisibleAllGenreQuestionModal"
-            :questions="allGenreQuestions"
-            @close-modal="handleCloseModal"
-          />
           <QuestionModal
             v-if="isVisibleChampionsLeagueQuestionModal"
             :questions="championsLeagueQuestions"
@@ -109,7 +98,6 @@ export default {
   },
   data() {
     return {
-      isVisibleAllGenreQuestionModal: false,
       isVisibleChampionsLeagueQuestionModal: false,
       isVisibleSerieAQuestionModal: false,
       isVisiblePremierLeagueQuestionModal: false,
@@ -120,9 +108,6 @@ export default {
   },
   computed: {
     ...mapGetters('questions', ['questions']),
-    allGenreQuestions() {
-      return this.questions;
-    },
     championsLeagueQuestions() {
       return this.questions.filter(question => {
         return question.category == 'champions_league';
@@ -157,9 +142,6 @@ export default {
       'fetchQuestions',
       'createQuestion'
       ]),
-    handleOpenAllGenreQuestionModal() {
-      this.isVisibleAllGenreQuestionModal = true;
-    },
     handleOpenChampionsLeagueQuestionModal() {
       this.isVisibleChampionsLeagueQuestionModal = true;
     },
@@ -179,7 +161,6 @@ export default {
       this.isVisibleQuestionCreateModal = true;
     },
     handleCloseModal() {
-      this.isVisibleAllGenreQuestionModal = false;
       this.isVisibleChampionsLeagueQuestionModal = false;
       this.isVisibleSerieAQuestionModal = false;
       this.isVisiblePremierLeagueQuestionModal = false;
