@@ -1,9 +1,11 @@
 class Api::UsersController < ApplicationController
-  before_action :authenticate!, only: %i[me]
+  before_action :authenticate!
+
   def index
     @users = User.all
     render json: @users
   end
+
   def create
     user = User.new(user_params)
 
@@ -11,6 +13,15 @@ class Api::UsersController < ApplicationController
       render json: user
     else
       render json: user.errors, status: :bad_request
+    end
+  end
+
+  def update
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      render json: @user
+    else
+      render json: @user.errors, status: :bad_request
     end
   end
 

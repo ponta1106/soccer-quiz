@@ -1,17 +1,43 @@
 <template>
-  <div class="container col-8 text-center">
+  <div class="container col-lg-8">
+    <div class="h3 m-5">
+      ユーザー詳細
+    </div>
     <div
       class="rounded shadow m-3 p-3"
     >
-      <h4>ユーザー詳細画面</h4>
       <p>{{ authUser.name }}</p>
       <p>{{ authUser.email }}</p>
+      <button
+      class="btn btn-success"
+      @click="handleShowUserEditModal"
+      >ユーザーを編集</button>
+      <UserEditModal
+        v-if="isVisibleUserEditModal"
+        @close-modal="handleCloseUserEditModal"
+      />
     </div>
-    <h4>登録ユーザー一覧</h4>
-    <p
-      v-for="user in users"
-      :key="user.id"
-    >{{ user.name }}</p>
+    <div class="h3 m-5">
+      {{ authUser.name }}さんが作成した問題一覧
+    </div>
+    <div
+      class="rounded shadow m-3 p-3"
+      v-for="question in isAuthUserQuestions"
+      :key="question.id"
+    >
+      <p>{{ question.title }}</p>
+      <button
+      class="btn btn-success"
+      @click="handleShowQuestionEditModal(question)"
+      >クイズを編集</button>
+    </div>
+    <QuestionEditModal
+      v-if="isVisibleQuestionEditModal"
+      :question="questionEdit"
+      @close-modal="handleCloseQuestionEditModal"
+      @update-question="handleUpdateQuestion"
+      @delete-question="handleDeleteQuestion"
+    />
     <router-link
       :to="{ name: 'TopIndex' }"
       class="btn shadow m-5"
@@ -28,18 +54,75 @@
 </template>
 
 <script>
+import QuestionEditModal from '../question/components/QuestionEditModal'
+import UserEditModal from './components/UserEditModal'
+
 import { mapGetters, mapActions } from "vuex"
 
 export default {
   name: 'UserIndex',
+  components: {
+    QuestionEditModal,
+    UserEditModal
+  },
+  data() {
+    return {
+      questionEdit: {},
+      isVisibleQuestionEditModal: false,
+      isVisibleUserEditModal: false,
+    }
+  },
   computed: {
-    ...mapGetters("users", ["users", "authUser"])
+    ...mapGetters("users", ["authUser"]),
+    ...mapGetters('questions', ['questions']),
+    isAuthUserQuestions() {
+      return this.questions.filter(question => {
+        return question.user_id == this.authUser.id
+      })
+    }
   },
   methods: {
-    ...mapActions("users", ["fetchUsers"])
+    ...mapActions("users", [
+      'updateUser',
+      'fetchUsers'
+      ]),
+    ...mapActions('questions',[
+      'fetchQuestions',
+      'updateQuestion',
+      'deleteQuestion',
+      ]),
+    handleCloseUserEditModal() {
+      this.isVisibleUserEditModal = false;
+    },
+    handleCloseQuestionEditModal() {
+      this.isVisibleQuestionEditModal = false;
+    },
+    handleShowUserEditModal() {
+      this.isVisibleUserEditModal = true;
+    },
+    handleShowQuestionEditModal(question) {
+      this.questionEdit = Object.assign({}, question);
+      this.isVisibleQuestionEditModal = true;
+    },
+    async handleUpdateQuestion(question) {
+      try {
+        this.handleCloseQuestionEditModal();
+        await this.updateQuestion(question);
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    async handleDeleteQuestion(question) {
+      try {
+        this.handleCloseQuestionEditModal();
+        await this.deleteQuestion(question);
+      } catch (error) {
+        console.log(error);
+      }
+    },
   },
   created() {
-    this.fetchUsers();
-  },
+    this.fetchQuestions();
+  }
 }
 </script>

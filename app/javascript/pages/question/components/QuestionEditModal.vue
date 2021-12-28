@@ -1,11 +1,11 @@
 <template>
-  <div id="question-create-modal">
+  <div id="question-edit-modal">
     <ValidationObserver v-slot="{ handleSubmit }">
     <div class="modal">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
-            <h5>クイズ作成画面</h5>
+            <h5>クイズ編集画面</h5>
           </div>
           <div class="modal-body">
             <div class="row">
@@ -171,9 +171,15 @@
           <div class="d-flex modal-footer justify-content-between mt-3">
             <button
               class="btn btn-secondary shadow"
-              @click="handleSubmit(handleCreateQuestion)"
+              @click="handleSubmit(handleUpdateQuestion)"
             >
-              追加
+              更新する
+            </button>
+            <button
+              class="btn btn-danger shadow"
+              @click="handleDeleteQuestion"
+            >
+              削除する
             </button>
             <button
               class="btn shadow"
@@ -192,28 +198,22 @@
 
 <script>
 export default {
-  name: 'QuestionCreateModal',
-  data() {
-    return {
-      question: {
-        title: '',
-        explanation: '',
-        answer: '',
-        category: '',
-        choice1: '',
-        choice2: '',
-        choice3: '',
-        choice4: '',
-        user_id: 1,
-      }
+  name: "QuestionEditModal",
+  props: {
+    question: {
+      type: Object,
+      required: true
     }
   },
   methods: {
     handleCloseModal() {
       this.$emit('close-modal');
     },
-    handleCreateQuestion() {
-      this.$emit('create-question', this.question)
+    handleUpdateQuestion() {
+      this.$emit('update-question', this.question)
+    },
+    handleDeleteQuestion() {
+      this.$emit('delete-question', this.question)
     }
   }
 }
@@ -221,9 +221,8 @@ export default {
 
 <style scoped>
 
- .modal {
+.modal {
   display: block;
 }
-
 
 </style>

@@ -3,7 +3,7 @@ class Api::QuestionsController < ApplicationController
   before_action :set_question, only: [:show, :update, :destroy]
 
   def index
-    @questions = Question.all.includes(:user)
+    @questions = Question.all
     render json: @questions
   end
 

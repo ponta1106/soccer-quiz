@@ -16,7 +16,7 @@ const mutations = {
   },
   setAuthUser: (state, authUser) => {
     state.authUser = authUser
-  }
+  },
 };
 
 const actions = {
@@ -58,6 +58,12 @@ const actions = {
       commit('setAuthUser', null)
       return null
     }
+  },
+  updateUser({ commit, state }, user) {
+    return axios.patch(`users/${state.authUser.id}`, user)
+      .then(res => {
+        commit('setAuthUser', res.data)
+      })
   }
 }
 

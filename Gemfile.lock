@@ -314,7 +314,7 @@ DEPENDENCIES
   factory_bot_rails
   foreman
   jbuilder (~> 2.7)
-  jwt
+  jwt (~> 2.2)
   listen (~> 3.2)
   mimemagic (~> 0.3.10)
   pg

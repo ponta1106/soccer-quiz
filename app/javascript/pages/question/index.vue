@@ -1,17 +1,11 @@
 <template>
   <div class="container">
     <div class="d-flex justify-content-center">
-      <div class="col-8 rounded shadow m-3 p-3">
+      <div class="col-12 col-lg-8 rounded shadow m-3 p-3">
         <h3 class="text-center">
           クイズ選択画面
         </h3>
         <div class="d-flex flex-column">
-          <button
-            class="btn shadow p-2 m-2"
-            @click="handleOpenAllGenreQuestionModal"
-          >
-            オールジャンル：{{ allGenreQuestions.length }}問
-          </button>
           <button
             class="btn shadow p-2 m-2"
             @click="handleOpenChampionsLeagueQuestionModal"
@@ -31,16 +25,23 @@
             プレミアリーグ：{{ premierLeagueQuestions.length }}問
           </button>
           <button
+            class="btn shadow p-2 m-2"
+            @click="handleOpenLaLigaQuestionModal"
+          >
+            ラリーガ：{{ laLigaQuestions.length }}問
+          </button>
+          <button
+            class="btn shadow p-2 m-2"
+            @click="handleOpenOthersQuestionModal"
+          >
+            その他：{{ othersQuestions.length }}問
+          </button>
+          <button
             class="btn btn-secondary shadow p-2 m-2"
             @click="handleShowQuestionCreateModal"
           >
             クイズを作成する
           </button>
-          <QuestionModal
-            v-if="isVisibleAllGenreQuestionModal"
-            :questions="allGenreQuestions"
-            @close-modal="handleCloseModal"
-          />
           <QuestionModal
             v-if="isVisibleChampionsLeagueQuestionModal"
             :questions="championsLeagueQuestions"
@@ -56,13 +57,21 @@
             :questions="premierLeagueQuestions"
             @close-modal="handleCloseModal"
           />
-          <transition name="fade">
-            <QuestionCreateModal
-              v-if="isVisibleQuestionCreateModal"
-              @close-modal="handleCloseQuestionCreateModal"
-              @create-question="handleCreateQuestion"
-            />
-          </transition>
+          <QuestionModal
+            v-if="isVisibleLaLigaQuestionModal"
+            :questions="laLigaQuestions"
+            @close-modal="handleCloseModal"
+          />
+          <QuestionModal
+            v-if="isVisibleOthersQuestionModal"
+            :questions="othersQuestions"
+            @close-modal="handleCloseModal"
+          />
+          <QuestionCreateModal
+            v-if="isVisibleQuestionCreateModal"
+            @close-modal="handleCloseQuestionCreateModal"
+            @create-question="handleCreateQuestion"
+          />
         </div>
       </div>
     </div>
@@ -89,18 +98,16 @@ export default {
   },
   data() {
     return {
-      isVisibleAllGenreQuestionModal: false,
       isVisibleChampionsLeagueQuestionModal: false,
       isVisibleSerieAQuestionModal: false,
       isVisiblePremierLeagueQuestionModal: false,
+      isVisibleLaLigaQuestionModal: false,
+      isVisibleOthersQuestionModal: false,
       isVisibleQuestionCreateModal: false,
     }
   },
   computed: {
     ...mapGetters('questions', ['questions']),
-    allGenreQuestions() {
-      return this.questions;
-    },
     championsLeagueQuestions() {
       return this.questions.filter(question => {
         return question.category == 'champions_league';
@@ -116,6 +123,16 @@ export default {
         return question.category == 'premier_league';
       })
     },
+    laLigaQuestions() {
+      return this.questions.filter(question => {
+        return question.category == 'la_liga';
+      })
+    },
+    othersQuestions() {
+      return this.questions.filter(question => {
+        return question.category == 'others';
+      })
+    },
   },
   created() {
     this.fetchQuestions();
@@ -125,9 +142,6 @@ export default {
       'fetchQuestions',
       'createQuestion'
       ]),
-    handleOpenAllGenreQuestionModal() {
-      this.isVisibleAllGenreQuestionModal = true;
-    },
     handleOpenChampionsLeagueQuestionModal() {
       this.isVisibleChampionsLeagueQuestionModal = true;
     },
@@ -137,22 +151,29 @@ export default {
     handleOpenPremierLeagueQuestionModal() {
       this.isVisiblePremierLeagueQuestionModal = true;
     },
+    handleOpenLaLigaQuestionModal() {
+      this.isVisibleLaLigaQuestionModal = true;
+    },
+    handleOpenOthersQuestionModal() {
+      this.isVisibleOthersQuestionModal = true;
+    },
     handleShowQuestionCreateModal() {
       this.isVisibleQuestionCreateModal = true;
     },
     handleCloseModal() {
-      this.isVisibleAllGenreQuestionModal = false;
       this.isVisibleChampionsLeagueQuestionModal = false;
       this.isVisibleSerieAQuestionModal = false;
       this.isVisiblePremierLeagueQuestionModal = false;
+      this.isVisibleLaLigaQuestionModal = false;
+      this.isVisibleOthersQuestionModal = false;
     },
     handleCloseQuestionCreateModal() {
       this.isVisibleQuestionCreateModal = false;
     },
     async handleCreateQuestion(question) {
       try{
-        await this.createQuestion(question)
-        this.handleCloseQuestionCreateModal()
+        this.handleCloseQuestionCreateModal();
+        await this.createQuestion(question);
       } catch(error) {
         console.log(error)
       }
