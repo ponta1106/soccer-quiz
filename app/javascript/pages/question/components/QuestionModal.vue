@@ -66,7 +66,7 @@
                 v-if="answered"
                 class="modal-body container text-center"
               >
-                <h5 style="font-size: 32px;">
+                <h5 style="font-size: 40px;">
                   {{ result }}
                 </h5>
                 <template
@@ -75,10 +75,10 @@
                   <img
                     src="../../../assets/images/hirayama.png"
                     alt="show-results"
-                    style="width: 300px;"
+                    style="width: 200px;"
                   >
                 </template>
-                <p class="p-3 bg-light">
+                <p class="p-3 bg-light m-2">
                   {{ questions[currentQuestionIndex].explanation }}
                 </p>
               </div>
@@ -96,20 +96,27 @@
                 <template
                   v-else
                 >
-                  <button
-                    v-if="answered"
-                    class="btn btn-secondary shadow"
-                    @click="nextQuestion"
-                  >
-                    次へ
-                  </button>
+                  <div class="text-center col-12 mb-4">
+                    {{ currentQuestionIndex }} / {{ questions.length }}
+                  </div>
+                  <div>
+                    <button
+                      v-if="answered"
+                      class="btn btn-secondary shadow"
+                      @click="nextQuestion"
+                    >
+                      次へ
+                    </button>
+                  </div>
                 </template>
-                <button
-                  class="btn shadow"
-                  @click="closeModal"
-                >
-                  閉じる
-                </button>
+                <div>
+                  <button
+                    class="btn shadow"
+                    @click="closeModal"
+                  >
+                    閉じる
+                  </button>
+                </div>
                 <QuestionResultsModal
                   v-if="isVisibleQuestionResultsModal"
                   :question_results="question_results"
