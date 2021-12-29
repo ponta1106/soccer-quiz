@@ -29,16 +29,10 @@
           </div>
           <div class="modal-footer">
             <button
-              class="btn btn-secondary shadow"
-              @click="saveAndCloseModal"
-            >
-              保存して終了
-            </button>
-            <button
               class="btn shadow"
               @click="closeModal"
             >
-              保存せずに終了
+              終了
             </button>
           </div>
         </div>
