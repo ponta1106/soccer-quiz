@@ -97,7 +97,7 @@
                   v-else
                 >
                   <div class="text-center col-12 mb-4">
-                    {{ currentQuestionIndex }} / {{ questions.length }}
+                    {{ currentQuestionIndex + 1 }} / {{ questions.length }}
                   </div>
                   <div>
                     <button
