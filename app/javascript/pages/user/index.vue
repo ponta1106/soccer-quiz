@@ -9,35 +9,28 @@
       <p>{{ authUser.name }}</p>
       <p>{{ authUser.email }}</p>
       <button
-      class="btn btn-success"
-      @click="handleShowUserEditModal"
-      >ユーザーを編集</button>
-      <UserEditModal
-        v-if="isVisibleUserEditModal"
-        @close-modal="handleCloseUserEditModal"
-      />
+        class="btn btn-success"
+        @click="handleShowUserEditModal"
+      >
+        ユーザーを編集
+      </button>
     </div>
     <div class="h3 m-5">
       {{ authUser.name }}さんが作成した問題一覧
     </div>
     <div
-      class="rounded shadow m-3 p-3"
       v-for="question in isAuthUserQuestions"
       :key="question.id"
+      class="rounded shadow m-3 p-3"
     >
       <p>{{ question.title }}</p>
       <button
-      class="btn btn-success"
-      @click="handleShowQuestionEditModal(question)"
-      >クイズを編集</button>
+        class="btn btn-success"
+        @click="handleShowQuestionEditModal(question)"
+      >
+        クイズを編集
+      </button>
     </div>
-    <QuestionEditModal
-      v-if="isVisibleQuestionEditModal"
-      :question="questionEdit"
-      @close-modal="handleCloseQuestionEditModal"
-      @update-question="handleUpdateQuestion"
-      @delete-question="handleDeleteQuestion"
-    />
     <router-link
       :to="{ name: 'TopIndex' }"
       class="btn shadow m-5"
@@ -50,6 +43,19 @@
     >
       クイズ一覧
     </router-link>
+    <transition name="fade">
+      <UserEditModal
+        v-if="isVisibleUserEditModal"
+        @close-modal="handleCloseUserEditModal"
+      />
+      <QuestionEditModal
+        v-if="isVisibleQuestionEditModal"
+        :question="questionEdit"
+        @close-modal="handleCloseQuestionEditModal"
+        @update-question="handleUpdateQuestion"
+        @delete-question="handleDeleteQuestion"
+      />
+    </transition>
   </div>
 </template>
 
@@ -80,6 +86,9 @@ export default {
         return question.user_id == this.authUser.id
       })
     }
+  },
+  created() {
+    this.fetchQuestions();
   },
   methods: {
     ...mapActions("users", [
@@ -119,10 +128,7 @@ export default {
       } catch (error) {
         console.log(error);
       }
-    },
-  },
-  created() {
-    this.fetchQuestions();
+    }
   }
 }
 </script>

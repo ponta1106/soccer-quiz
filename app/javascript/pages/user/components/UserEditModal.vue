@@ -100,6 +100,9 @@ export default {
   computed: {
     ...mapGetters("users", ["authUser"]),
   },
+  created() {
+    this.user = Object.assign({}, this.authUser)
+  },
   methods: {
     ...mapActions("users", ["updateUser"]),
     handleCloseModal() {
@@ -122,12 +125,8 @@ export default {
       } catch (error) {
         console.log(error);
       }
-
     }
-  },
-  created() {
-    this.user = Object.assign({}, this.authUser)
-  },
+  }
 }
 </script>
 

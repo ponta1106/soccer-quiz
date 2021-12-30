@@ -27,23 +27,23 @@
         </ValidationProvider>
       </div>
       <div class="form-group mb-3">
-      <ValidationProvider
-        v-slot="{ errors }"
-        rules="required|min:3"
-      >
-        <label
-          for="password"
-          class="form-label"
-        >パスワード</label>
-        <input
-          id="password"
-          v-model="user.password"
-          type="password"
-          class="form-control"
-          placeholder="password"
+        <ValidationProvider
+          v-slot="{ errors }"
+          rules="required|min:3"
         >
-        <span class="text-danger">{{ errors[0] }}</span>
-      </ValidationProvider>
+          <label
+            for="password"
+            class="form-label"
+          >パスワード</label>
+          <input
+            id="password"
+            v-model="user.password"
+            type="password"
+            class="form-control"
+            placeholder="password"
+          >
+          <span class="text-danger">{{ errors[0] }}</span>
+        </ValidationProvider>
       </div>
       <button
         type="submit"

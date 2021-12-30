@@ -46,7 +46,7 @@
 export default {
   name: 'QuestionResultsModal',
   props: {
-    question_results: {
+    questionResults: {
       type: Array,
       required: true
     },
@@ -59,11 +59,11 @@ export default {
   computed: {
     // 問題数を返します。
     numberOfQuestions() {
-      return this.question_results.length
+      return this.questionResults.length
     },
     // 正解の個数を返します。
     score() {
-      return this.question_results.filter(result => {
+      return this.questionResults.filter(result => {
         return result == 'correct';
       }).length;
     }
@@ -81,21 +81,8 @@ export default {
 
 <style scoped>
 
- .modal {
-  display: block;
-}
-
-.fade-enter-active, .fade-leave-active {
-  transition: opacity .2s;
-}
-.fade-enter, .fade-leave-to {
-  opacity: 0;
-}
-
-.active {
-  background-color: pink;
-  padding: 10px;
-}
+  .modal {
+    display: block;
+  }
 
 </style>
-

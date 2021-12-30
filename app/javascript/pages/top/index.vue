@@ -1,17 +1,23 @@
 <template>
-  <div class="container">
-    <div class="text-center">
-      <h3>ガチ勢じゃないとわからない？</h3>
-      <h2>欧州サッカークイズ</h2>
-      <div class="mt-4">
-        欧州サッカーファンが、知識を腕試しするクイズアプリです。
+  <div class="container shadow rounded top">
+    <div class="container text-center p-3">
+      <div class="m-3">
+        <h1>欧州サッカークイズ</h1>
       </div>
-      <router-link
-        :to="{ name: 'QuestionIndex' }"
-        class="btn btn-secondary shadow m-5"
-      >
-        はじめる
-      </router-link>
+      <div class="m-3">
+        <p>欧州サッカーガチ勢向けの
+          <br>
+          難問クイズアプリです
+        </p>
+      </div>
+      <div class="m-3">
+        <router-link
+          :to="{ name: 'QuestionIndex' }"
+          class="btn btn-secondary shadow"
+        >
+          はじめる
+        </router-link>
+      </div>
     </div>
   </div>
 </template>
@@ -23,4 +29,7 @@ export default {
 </script>
 
 <style scoped>
+ .top {
+   backdrop-filter: blur(5px);
+ }
 </style>
