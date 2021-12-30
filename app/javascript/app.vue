@@ -22,9 +22,20 @@ export default {
 </script>
 
 <style>
-#app {
-  color: #555;
-  min-height: 100vh;
-  background-color: #e9e3df;
-}
+  #app {
+    color: #555;
+    min-height: 100vh;
+    font-family: 'Kosugi Maru', sans-serif;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity .5s;
+  }
+
+  .fade-enter, .fade-leave-to {
+    opacity: 0;
+  }
+
 </style>
