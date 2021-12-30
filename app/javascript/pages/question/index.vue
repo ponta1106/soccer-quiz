@@ -42,36 +42,38 @@
           >
             クイズを作成する
           </button>
-          <QuestionModal
-            v-if="isVisibleChampionsLeagueQuestionModal"
-            :questions="championsLeagueQuestions"
-            @close-modal="handleCloseModal"
-          />
-          <QuestionModal
-            v-if="isVisibleSerieAQuestionModal"
-            :questions="serieAQuestions"
-            @close-modal="handleCloseModal"
-          />
-          <QuestionModal
-            v-if="isVisiblePremierLeagueQuestionModal"
-            :questions="premierLeagueQuestions"
-            @close-modal="handleCloseModal"
-          />
-          <QuestionModal
-            v-if="isVisibleLaLigaQuestionModal"
-            :questions="laLigaQuestions"
-            @close-modal="handleCloseModal"
-          />
-          <QuestionModal
-            v-if="isVisibleOthersQuestionModal"
-            :questions="othersQuestions"
-            @close-modal="handleCloseModal"
-          />
-          <QuestionCreateModal
-            v-if="isVisibleQuestionCreateModal"
-            @close-modal="handleCloseQuestionCreateModal"
-            @create-question="handleCreateQuestion"
-          />
+          <transition name="fade">
+            <QuestionModal
+              v-if="isVisibleChampionsLeagueQuestionModal"
+              :questions="championsLeagueQuestions"
+              @close-modal="handleCloseModal"
+            />
+            <QuestionModal
+              v-if="isVisibleSerieAQuestionModal"
+              :questions="serieAQuestions"
+              @close-modal="handleCloseModal"
+            />
+            <QuestionModal
+              v-if="isVisiblePremierLeagueQuestionModal"
+              :questions="premierLeagueQuestions"
+              @close-modal="handleCloseModal"
+            />
+            <QuestionModal
+              v-if="isVisibleLaLigaQuestionModal"
+              :questions="laLigaQuestions"
+              @close-modal="handleCloseModal"
+            />
+            <QuestionModal
+              v-if="isVisibleOthersQuestionModal"
+              :questions="othersQuestions"
+              @close-modal="handleCloseModal"
+            />
+            <QuestionCreateModal
+              v-if="isVisibleQuestionCreateModal"
+              @close-modal="handleCloseQuestionCreateModal"
+              @create-question="handleCreateQuestion"
+            />
+          </transition>
         </div>
       </div>
     </div>
@@ -183,4 +185,9 @@ export default {
 </script>
 
 <style scoped>
+
+ .modal {
+  display: block;
+}
+
 </style>
