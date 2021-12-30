@@ -74,11 +74,6 @@
               <template
                 v-if="!correct_answer"
               >
-                <img
-                  src="../../../assets/images/hirayama.png"
-                  alt="show-results"
-                  style="width: 200px;"
-                >
               </template>
               <p class="p-3 m-2 bg-light">
                 {{ questions[currentQuestionIndex].explanation }}
@@ -88,12 +83,14 @@
               <template
                 v-if="question_results.length == questions.length"
               >
-                <button
-                  class="btn btn-success shadow"
-                  @click="handleShowQuestionResultsModal"
-                >
-                  結果発表
-                </button>
+                <div class="col-4">
+                  <button
+                    class="btn btn-success shadow col-12"
+                    @click="handleShowQuestionResultsModal"
+                  >
+                    結果発表
+                  </button>
+                </div>
               </template>
               <template
                 v-else
@@ -101,19 +98,19 @@
                 <div class="text-center col-12 mb-4">
                   {{ currentQuestionIndex + 1 }}問 / 全{{ questions.length }}問
                 </div>
-                <div>
+                <div class="col-4">
                   <button
                     v-if="answered"
-                    class="btn btn-secondary shadow"
+                    class="btn btn-secondary shadow col-12"
                     @click="nextQuestion"
                   >
                     次へ
                   </button>
                 </div>
               </template>
-              <div>
+              <div class="col-4">
                 <button
-                  class="btn shadow"
+                  class="btn shadow col-12"
                   @click="handleShowQuestionConfirmationModal"
                 >
                   閉じる

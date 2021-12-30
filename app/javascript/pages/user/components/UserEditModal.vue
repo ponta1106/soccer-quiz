@@ -61,19 +61,23 @@
             </div>
           </div>
           <div class="modal-footer mt-3">
-            <button
-              type="submit"
-              class="btn btn-secondary shadow"
-              @click="update"
-            >
-              更新する
-            </button>
-            <button
-              class="btn shadow"
-              @click="handleCloseModal"
-            >
-              閉じる
-            </button>
+            <div class="col-4">
+              <button
+                type="submit"
+                class="btn btn-secondary shadow col-12"
+                @click="update"
+              >
+                更新する
+              </button>
+            </div>
+            <div class="col-4">
+              <button
+                class="btn shadow col-12"
+                @click="handleCloseModal"
+              >
+                閉じる
+              </button>
+            </div>
           </div>
         </div>
       </div>

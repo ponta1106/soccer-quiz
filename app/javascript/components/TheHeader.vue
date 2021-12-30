@@ -2,12 +2,14 @@
   <header>
     <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between shadow">
       <div class="container">
-        <router-link
-          :to="{ name: 'TopIndex' }"
-          class="navbar-brand mb-0 h1"
-        >
-          欧州サッカークイズ
-        </router-link>
+        <div class="col-6">
+          <router-link
+            :to="{ name: 'TopIndex' }"
+            class="navbar-brand mb-0 h1"
+          >
+            欧州サッカークイズ
+          </router-link>
+        </div>
         <ul class="navbar-nav">
           <template v-if="!authUser">
             <li class="nav-item active">
@@ -15,7 +17,7 @@
                 :to="{ name: 'RegisterIndex' }"
                 class="nav-link"
               >
-                ユーザー登録
+                登録
               </router-link>
             </li>
             <li class="nav-item active">
