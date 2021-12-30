@@ -3,16 +3,16 @@
     <div class="modal">
       <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
-          <div class="modal-body">
+          <div class="modal-body text-center">
             <p>クイズを終了しますか？</p>
             <button
-              class="btn btn shadow p-2 m-2"
+              class="btn btn shadow p-2 m-2 col-4"
               @click="closeAllModal"
             >
               はい
             </button>
             <button
-              class="btn shadow p-2 m-2"
+              class="btn shadow p-2 m-2 col-4"
               @click="closeQuestionConfirmationModal"
             >
               いいえ

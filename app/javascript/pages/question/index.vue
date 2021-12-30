@@ -80,7 +80,7 @@
     <div class="text-center">
       <router-link
         :to="{ name: 'TopIndex' }"
-        class="btn shadow mt-5"
+        class="btn shadow mt-5 col-4"
       >
         戻る
       </router-link>

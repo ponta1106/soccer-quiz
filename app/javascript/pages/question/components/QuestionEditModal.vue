@@ -169,24 +169,30 @@
               </div>
             </div>
             <div class="d-flex modal-footer justify-content-between mt-3">
-              <button
-                class="btn btn-secondary shadow"
-                @click="handleSubmit(handleUpdateQuestion)"
-              >
-                更新する
-              </button>
-              <button
-                class="btn btn-danger shadow"
-                @click="handleDeleteQuestion"
-              >
-                削除する
-              </button>
-              <button
-                class="btn shadow"
-                @click="handleCloseModal"
-              >
-                閉じる
-              </button>
+              <div class="col-4">
+                <button
+                  class="btn btn-secondary shadow col-12"
+                  @click="handleSubmit(handleUpdateQuestion)"
+                >
+                  更新する
+                </button>
+              </div>
+              <div class="col-4">
+                <button
+                  class="btn btn-danger shadow col-12"
+                  @click="handleDeleteQuestion"
+                >
+                  削除する
+                </button>
+              </div>
+              <div class="col-3">
+                <button
+                  class="btn shadow col-12"
+                  @click="handleCloseModal"
+                >
+                  閉じる
+                </button>
+              </div>
             </div>
           </div>
         </div>

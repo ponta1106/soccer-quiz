@@ -1,5 +1,5 @@
 <template>
-  <div class="container shadow rounded top">
+  <div class="container">
     <div class="container text-center p-3">
       <div class="m-3">
         <h1>欧州サッカークイズ</h1>
@@ -13,7 +13,7 @@
       <div class="m-3">
         <router-link
           :to="{ name: 'QuestionIndex' }"
-          class="btn btn-secondary shadow"
+          class="btn btn-secondary shadow col-4"
         >
           はじめる
         </router-link>
@@ -29,7 +29,4 @@ export default {
 </script>
 
 <style scoped>
- .top {
-   backdrop-filter: blur(5px);
- }
 </style>

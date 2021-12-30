@@ -31,18 +31,20 @@
         クイズを編集
       </button>
     </div>
-    <router-link
-      :to="{ name: 'TopIndex' }"
-      class="btn shadow m-5"
-    >
-      トップへ
-    </router-link>
-    <router-link
-      :to="{ name: 'QuestionIndex' }"
-      class="btn shadow m-5"
-    >
-      クイズ一覧
-    </router-link>
+    <div class="text-center">
+      <router-link
+        :to="{ name: 'TopIndex' }"
+        class="btn shadow m-3 col-4"
+      >
+        トップへ
+      </router-link>
+      <router-link
+        :to="{ name: 'QuestionIndex' }"
+        class="btn shadow m-3 col-4"
+      >
+        クイズ一覧
+      </router-link>
+    </div>
     <transition name="fade">
       <UserEditModal
         v-if="isVisibleUserEditModal"
