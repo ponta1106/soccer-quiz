@@ -18,10 +18,11 @@
           >ユーザー名</label>
           <input
             id="name"
-            v-model="user.name"
             type="text"
+            name="ユーザー名"
             class="form-control"
             placeholder="username"
+            v-model="user.name"
           >
           <span class="text-danger">{{ errors[0] }}</span>
         </ValidationProvider>
@@ -37,10 +38,11 @@
           >メールアドレス</label>
           <input
             id="email"
-            v-model="user.email"
             type="email"
+            name="メールアドレス"
             class="form-control"
             placeholder="test@example.com"
+            v-model="user.email"
           >
           <span class="text-danger">{{ errors[0] }}</span>
         </ValidationProvider>
@@ -57,10 +59,11 @@
           >パスワード</label>
           <input
             id="password"
-            v-model="user.password"
             type="password"
+            name="パスワード"
             class="form-control"
             placeholder="password"
+            v-model="user.password"
           >
           <span class="text-danger">{{ errors[0] }}</span>
         </ValidationProvider>
@@ -76,10 +79,11 @@
           >パスワード（確認）</label>
           <input
             id="password_confirmation"
-            v-model="user.password_confirmation"
             type="password"
+            name="パスワード"
             class="form-control"
             placeholder="password"
+            v-model="user.password_confirmation"
           >
           <span class="text-danger">{{ errors[0] }}</span>
         </ValidationProvider>
