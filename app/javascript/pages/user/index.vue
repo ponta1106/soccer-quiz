@@ -9,6 +9,7 @@
       <p>{{ authUser.name }}</p>
       <p>{{ authUser.email }}</p>
       <button
+        v-if="authUser.name != 'ゲストユーザー'"
         class="btn btn-success col-6 col-sm-4"
         @click="handleShowUserEditModal"
       >
@@ -25,6 +26,7 @@
     >
       <p>{{ question.title }}</p>
       <button
+        v-if="authUser.name != 'ゲストユーザー'"
         class="btn btn-success col-6 col-sm-4"
         @click="handleShowQuestionEditModal(question)"
       >
