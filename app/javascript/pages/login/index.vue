@@ -18,10 +18,11 @@
           >メールアドレス</label>
           <input
             id="email"
-            v-model="user.email"
             type="email"
+            name="メールアドレス"
             class="form-control"
             placeholder="test@example.com"
+            v-model="user.email"
           >
           <span class="text-danger">{{ errors[0] }}</span>
         </ValidationProvider>
@@ -37,10 +38,11 @@
           >パスワード</label>
           <input
             id="password"
-            v-model="user.password"
             type="password"
+            name="パスワード"
             class="form-control"
             placeholder="password"
+            v-model="user.password"
           >
           <span class="text-danger">{{ errors[0] }}</span>
         </ValidationProvider>
