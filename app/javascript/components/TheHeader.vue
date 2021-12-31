@@ -1,15 +1,13 @@
 <template>
   <header>
-    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between shadow">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary d-flex justify-content-between shadow">
       <div class="container">
-        <div class="col-6">
-          <router-link
-            :to="{ name: 'TopIndex' }"
-            class="navbar-brand mb-0 h1"
-          >
-            欧州サッカークイズ
-          </router-link>
-        </div>
+        <router-link
+          :to="{ name: 'TopIndex' }"
+          class="navbar-brand mb-0 h1"
+        >
+          欧州サッカークイズ
+        </router-link>
         <ul class="navbar-nav">
           <template v-if="!authUser">
             <li class="nav-item active">
@@ -30,12 +28,14 @@
             </li>
           </template>
           <template v-else>
-            <router-link
-              :to="{ name: 'UserIndex' }"
-              class="nav-link"
-            >
-              {{ authUser.name }}
-            </router-link>
+            <li class="nav-item">
+              <router-link
+                :to="{ name: 'UserIndex' }"
+                class="nav-link"
+              >
+                {{ authUser.name }}
+              </router-link>
+            </li>
             <li class="nav-item">
               <router-link
                 to="#"

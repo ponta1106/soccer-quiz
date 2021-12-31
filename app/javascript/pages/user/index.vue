@@ -9,7 +9,7 @@
       <p>{{ authUser.name }}</p>
       <p>{{ authUser.email }}</p>
       <button
-        class="btn btn-success"
+        class="btn btn-success col-6 col-sm-4"
         @click="handleShowUserEditModal"
       >
         ユーザーを編集
@@ -25,22 +25,22 @@
     >
       <p>{{ question.title }}</p>
       <button
-        class="btn btn-success"
+        class="btn btn-success col-6 col-sm-4"
         @click="handleShowQuestionEditModal(question)"
       >
         クイズを編集
       </button>
     </div>
-    <div class="text-center">
+    <div class="d-flex justify-content-between">
       <router-link
         :to="{ name: 'TopIndex' }"
-        class="btn shadow m-3 col-4"
+        class="btn btn-secondary shadow m-3 col-4 router-link-active"
       >
         トップへ
       </router-link>
       <router-link
         :to="{ name: 'QuestionIndex' }"
-        class="btn shadow m-3 col-4"
+        class="btn btn-secondary shadow m-3 col-4 router-link-active"
       >
         クイズ一覧
       </router-link>
