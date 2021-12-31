@@ -50,6 +50,15 @@
       <div class="col-12 mb-3">
         <button
           type="submit"
+          class="btn btn-success shadow col-12"
+          @click="handleSubmit(guestLogin)"
+        >
+          ゲストとしてログイン
+        </button>
+      </div>
+      <div class="col-12 mb-3">
+        <button
+          type="submit"
           class="btn btn-secondary shadow col-12"
           @click="handleSubmit(login)"
         >
@@ -79,8 +88,12 @@ export default {
   data() {
     return {
       user: {
-        email: "",
-        password: "",
+        email: '',
+        password: '',
+      },
+      guestUser: {
+        email: 'guest@example.com',
+        password: 'guest'
       }
     }
   },
@@ -92,6 +105,14 @@ export default {
     async login() {
       try {
         await this.loginUser(this.user);
+        this.$router.push({ name: 'QuestionIndex' })
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    async guestLogin() {
+      try {
+        await this.loginUser(this.guestUser);
         this.$router.push({ name: 'QuestionIndex' })
       } catch (error) {
         console.log(error);
