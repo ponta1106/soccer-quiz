@@ -84,23 +84,27 @@
           <span class="text-danger">{{ errors[0] }}</span>
         </ValidationProvider>
       </div>
-      <button
-        type="submit"
-        class="btn btn-secondary shadow"
-        @click="handleSubmit(register)"
-      >
-        登録
-      </button>
+      <div class="col-12 mb-3">
+        <button
+          type="submit"
+          class="btn btn-secondary shadow col-12"
+          @click="handleSubmit(register)"
+        >
+          登録
+        </button>
+      </div>
     </ValidationObserver>
-    <router-link
-      :to="{ name: 'LoginIndex' }"
-    >
-      <button
-        class="btn"
+    <div class="col-12">
+      <router-link
+        :to="{ name: 'LoginIndex' }"
       >
-        すでにアカウントをお持ちの方はこちら
-      </button>
-    </router-link>
+        <button
+          class="btn shadow col-12"
+        >
+          すでにアカウントをお持ちの方はこちら
+        </button>
+      </router-link>
+    </div>
   </div>
 </template>
 
