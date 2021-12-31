@@ -29,7 +29,7 @@
           </div>
           <div class="modal-footer">
             <button
-              class="btn shadow"
+              class="btn shadow col-4"
               @click="closeModal"
             >
               終了
