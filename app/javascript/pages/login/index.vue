@@ -50,15 +50,6 @@
       <div class="col-12 mb-3">
         <button
           type="submit"
-          class="btn btn-success shadow col-12"
-          @click="handleSubmit(guestLogin)"
-        >
-          ゲストとしてログイン
-        </button>
-      </div>
-      <div class="col-12 mb-3">
-        <button
-          type="submit"
           class="btn btn-secondary shadow col-12"
           @click="handleSubmit(login)"
         >
@@ -66,6 +57,15 @@
         </button>
       </div>
     </ValidationObserver>
+    <div class="col-12 mb-3">
+      <button
+        type="submit"
+        class="btn btn-success shadow col-12"
+        @click="guestLogin"
+      >
+        ゲストとしてログイン
+      </button>
+    </div>
     <div class="col-12">
       <router-link
         :to="{ name: 'RegisterIndex' }"
