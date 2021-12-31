@@ -1,7 +1,7 @@
 <template>
   <div
     id="register-form"
-    class="container"
+    class="container col-sm-8"
   >
     <div class="h3 mb-3">
       ユーザー登録
