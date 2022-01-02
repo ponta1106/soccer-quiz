@@ -108,6 +108,7 @@ export default {
         this.$router.push({ name: 'QuestionIndex' })
       } catch (error) {
         console.log(error);
+        alert('通信に失敗しました。インターネットが繋がっているか確認し、再度実行してください。')
       }
     },
     async guestLogin() {
@@ -116,6 +117,7 @@ export default {
         this.$router.push({ name: 'QuestionIndex' })
       } catch (error) {
         console.log(error);
+        alert('通信に失敗しました。インターネットが繋がっているか確認し、再度実行してください。')
       }
     }
   }
