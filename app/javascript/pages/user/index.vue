@@ -33,12 +33,17 @@
       :size="{ width: '50px', height: '50px' }"
     />
     <template v-else>
+      <div class="h5 m-5">
+        チャンピオンズリーグ
+      </div>
       <div
-        v-for="question in isAuthUserQuestions"
+        v-for="question in championsLeagueQuestions"
         :key="question.id"
         class="rounded shadow m-3 p-3"
       >
-        <p>{{ question.title }}</p>
+        <p
+         class="mb-4"
+        >{{ question.title }}</p>
         <button
           v-if="authUser.name != 'ゲストユーザー'"
           class="btn btn-success col-6 col-sm-4"
@@ -47,7 +52,83 @@
           クイズを編集
         </button>
       </div>
-      <div class="d-flex justify-content-between">
+      <div class="h5 m-5">
+        セリエA
+      </div>
+      <div
+        v-for="question in serieAquestions"
+        :key="question.id"
+        class="rounded shadow m-3 p-3"
+      >
+        <p
+         class="mb-4"
+        >{{ question.title }}</p>
+        <button
+          v-if="authUser.name != 'ゲストユーザー'"
+          class="btn btn-success col-6 col-sm-4"
+          @click="handleShowQuestionEditModal(question)"
+        >
+          クイズを編集
+        </button>
+      </div>
+      <div class="h5 m-5">
+        プレミアリーグ
+      </div>
+      <div
+        v-for="question in premierLeagueQuestions"
+        :key="question.id"
+        class="rounded shadow m-3 p-3"
+      >
+        <p
+         class="mb-4"
+        >{{ question.title }}</p>
+        <button
+          v-if="authUser.name != 'ゲストユーザー'"
+          class="btn btn-success col-6 col-sm-4"
+          @click="handleShowQuestionEditModal(question)"
+        >
+          クイズを編集
+        </button>
+      </div>
+      <div class="h5 m-5">
+        ラリーガ
+      </div>
+      <div
+        v-for="question in laLigaQuestions"
+        :key="question.id"
+        class="rounded shadow m-3 p-3"
+      >
+        <p
+         class="mb-4"
+        >{{ question.title }}</p>
+        <button
+          v-if="authUser.name != 'ゲストユーザー'"
+          class="btn btn-success col-6 col-sm-4"
+          @click="handleShowQuestionEditModal(question)"
+        >
+          クイズを編集
+        </button>
+      </div>
+      <div class="h5 m-5">
+        その他
+      </div>
+      <div
+        v-for="question in othersQuestions"
+        :key="question.id"
+        class="rounded shadow m-3 p-3"
+      >
+        <p
+         class="mb-4"
+        >{{ question.title }}</p>
+        <button
+          v-if="authUser.name != 'ゲストユーザー'"
+          class="btn btn-success col-6 col-sm-4"
+          @click="handleShowQuestionEditModal(question)"
+        >
+          クイズを編集
+        </button>
+      </div>
+      <div class="d-flex justify-content-between m-2">
         <router-link
           :to="{ name: 'TopIndex' }"
           class="btn btn-secondary shadow m-3 col-4 router-link-active"
@@ -101,7 +182,32 @@ export default {
       return this.questions.filter(question => {
         return question.user_id == this.authUser.id
       })
-    }
+    },
+    championsLeagueQuestions() {
+      return this.isAuthUserQuestions.filter(question => {
+        return question.category == 'champions_league'
+      })
+    },
+    serieAquestions() {
+      return this.isAuthUserQuestions.filter(question => {
+        return question.category == 'serieA'
+      })
+    },
+    premierLeagueQuestions() {
+      return this.isAuthUserQuestions.filter(question => {
+        return question.category == 'premier_league'
+      })
+    },
+    laLigaQuestions() {
+      return this.isAuthUserQuestions.filter(question => {
+        return question.category == 'la_liga'
+      })
+    },
+    othersQuestions() {
+      return this.isAuthUserQuestions.filter(question => {
+        return question.category == 'others';
+      })
+    },
   },
   created() {
     this.fetchQuestions();
