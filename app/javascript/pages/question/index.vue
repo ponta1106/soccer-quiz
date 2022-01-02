@@ -111,12 +111,12 @@ export default {
   },
   data() {
     return {
-      isVisibleChampionsLeagueQuestionModal: false,
       isVisibleSerieAquestionModal: false,
-      isVisiblePremierLeagueQuestionModal: false,
       isVisibleLaLigaQuestionModal: false,
       isVisibleOthersQuestionModal: false,
       isVisibleQuestionCreateModal: false,
+      isVisiblePremierLeagueQuestionModal: false,
+      isVisibleChampionsLeagueQuestionModal: false,
     }
   },
   computed: {
