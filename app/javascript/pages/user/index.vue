@@ -128,7 +128,7 @@
           クイズを編集
         </button>
       </div>
-      <div class="d-flex justify-content-between m-2">
+      <div class="d-flex justify-content-between mt-5">
         <router-link
           :to="{ name: 'TopIndex' }"
           class="btn btn-secondary shadow m-3 col-4 router-link-active"
