@@ -22,9 +22,9 @@
             </button>
             <button
               class="btn shadow p-2 m-2"
-              @click="handleOpenSerieAQuestionModal"
+              @click="handleOpenSerieAquestionModal"
             >
-              セリエA：{{ serieAQuestions.length }}問
+              セリエA：{{ serieAquestions.length }}問
             </button>
             <button
               class="btn shadow p-2 m-2"
@@ -57,8 +57,8 @@
                 @close-modal="handleCloseModal"
               />
               <QuestionModal
-                v-if="isVisibleSerieAQuestionModal"
-                :questions="serieAQuestions"
+                v-if="isVisibleSerieAquestionModal"
+                :questions="serieAquestions"
                 @close-modal="handleCloseModal"
               />
               <QuestionModal
@@ -112,7 +112,7 @@ export default {
   data() {
     return {
       isVisibleChampionsLeagueQuestionModal: false,
-      isVisibleSerieAQuestionModal: false,
+      isVisibleSerieAquestionModal: false,
       isVisiblePremierLeagueQuestionModal: false,
       isVisibleLaLigaQuestionModal: false,
       isVisibleOthersQuestionModal: false,
@@ -126,7 +126,7 @@ export default {
         return question.category == 'champions_league';
       })
     },
-    serieAQuestions() {
+    serieAquestions() {
       return this.questions.filter(question => {
         return question.category == 'serieA';
       })
@@ -158,8 +158,8 @@ export default {
     handleOpenChampionsLeagueQuestionModal() {
       this.isVisibleChampionsLeagueQuestionModal = true;
     },
-    handleOpenSerieAQuestionModal() {
-      this.isVisibleSerieAQuestionModal = true;
+    handleOpenSerieAquestionModal() {
+      this.isVisibleSerieAquestionModal = true;
     },
     handleOpenPremierLeagueQuestionModal() {
       this.isVisiblePremierLeagueQuestionModal = true;
@@ -175,7 +175,7 @@ export default {
     },
     handleCloseModal() {
       this.isVisibleChampionsLeagueQuestionModal = false;
-      this.isVisibleSerieAQuestionModal = false;
+      this.isVisibleSerieAquestionModal = false;
       this.isVisiblePremierLeagueQuestionModal = false;
       this.isVisibleLaLigaQuestionModal = false;
       this.isVisibleOthersQuestionModal = false;
