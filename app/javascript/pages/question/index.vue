@@ -5,76 +5,85 @@
         <h3 class="text-center">
           クイズ選択画面
         </h3>
-        <div class="d-flex flex-column">
-          <button
-            class="btn shadow p-2 m-2"
-            @click="handleOpenChampionsLeagueQuestionModal"
-          >
-            チャンピオンズリーグ：{{ championsLeagueQuestions.length }}問
-          </button>
-          <button
-            class="btn shadow p-2 m-2"
-            @click="handleOpenSerieAQuestionModal"
-          >
-            セリエA：{{ serieAQuestions.length }}問
-          </button>
-          <button
-            class="btn shadow p-2 m-2"
-            @click="handleOpenPremierLeagueQuestionModal"
-          >
-            プレミアリーグ：{{ premierLeagueQuestions.length }}問
-          </button>
-          <button
-            class="btn shadow p-2 m-2"
-            @click="handleOpenLaLigaQuestionModal"
-          >
-            ラリーガ：{{ laLigaQuestions.length }}問
-          </button>
-          <button
-            class="btn shadow p-2 m-2"
-            @click="handleOpenOthersQuestionModal"
-          >
-            その他：{{ othersQuestions.length }}問
-          </button>
-          <button
-            class="btn btn-secondary shadow p-2 m-2"
-            @click="handleShowQuestionCreateModal"
-          >
-            クイズを作成する
-          </button>
-          <transition name="fade">
-            <QuestionModal
-              v-if="isVisibleChampionsLeagueQuestionModal"
-              :questions="championsLeagueQuestions"
-              @close-modal="handleCloseModal"
-            />
-            <QuestionModal
-              v-if="isVisibleSerieAQuestionModal"
-              :questions="serieAQuestions"
-              @close-modal="handleCloseModal"
-            />
-            <QuestionModal
-              v-if="isVisiblePremierLeagueQuestionModal"
-              :questions="premierLeagueQuestions"
-              @close-modal="handleCloseModal"
-            />
-            <QuestionModal
-              v-if="isVisibleLaLigaQuestionModal"
-              :questions="laLigaQuestions"
-              @close-modal="handleCloseModal"
-            />
-            <QuestionModal
-              v-if="isVisibleOthersQuestionModal"
-              :questions="othersQuestions"
-              @close-modal="handleCloseModal"
-            />
-            <QuestionCreateModal
-              v-if="isVisibleQuestionCreateModal"
-              @close-modal="handleCloseQuestionCreateModal"
-              @create-question="handleCreateQuestion"
-            />
-          </transition>
-        </div>
+        <VueLoading
+          type="spin"
+          color="#333"
+          v-if="isLoading"
+          class="loadingIcon"
+          :size="{ width: '50px', height: '50px' }"
+        />
+        <template v-else>
+          <div class="d-flex flex-column">
+            <button
+              class="btn shadow p-2 m-2"
+              @click="handleOpenChampionsLeagueQuestionModal"
+            >
+              チャンピオンズリーグ：{{ championsLeagueQuestions.length }}問
+            </button>
+            <button
+              class="btn shadow p-2 m-2"
+              @click="handleOpenSerieAQuestionModal"
+            >
+              セリエA：{{ serieAQuestions.length }}問
+            </button>
+            <button
+              class="btn shadow p-2 m-2"
+              @click="handleOpenPremierLeagueQuestionModal"
+            >
+              プレミアリーグ：{{ premierLeagueQuestions.length }}問
+            </button>
+            <button
+              class="btn shadow p-2 m-2"
+              @click="handleOpenLaLigaQuestionModal"
+            >
+              ラリーガ：{{ laLigaQuestions.length }}問
+            </button>
+            <button
+              class="btn shadow p-2 m-2"
+              @click="handleOpenOthersQuestionModal"
+            >
+              その他：{{ othersQuestions.length }}問
+            </button>
+            <button
+              class="btn btn-secondary shadow p-2 m-2"
+              @click="handleShowQuestionCreateModal"
+            >
+              クイズを作成する
+            </button>
+            <transition name="fade">
+              <QuestionModal
+                v-if="isVisibleChampionsLeagueQuestionModal"
+                :questions="championsLeagueQuestions"
+                @close-modal="handleCloseModal"
+              />
+              <QuestionModal
+                v-if="isVisibleSerieAQuestionModal"
+                :questions="serieAQuestions"
+                @close-modal="handleCloseModal"
+              />
+              <QuestionModal
+                v-if="isVisiblePremierLeagueQuestionModal"
+                :questions="premierLeagueQuestions"
+                @close-modal="handleCloseModal"
+              />
+              <QuestionModal
+                v-if="isVisibleLaLigaQuestionModal"
+                :questions="laLigaQuestions"
+                @close-modal="handleCloseModal"
+              />
+              <QuestionModal
+                v-if="isVisibleOthersQuestionModal"
+                :questions="othersQuestions"
+                @close-modal="handleCloseModal"
+              />
+              <QuestionCreateModal
+                v-if="isVisibleQuestionCreateModal"
+                @close-modal="handleCloseQuestionCreateModal"
+                @create-question="handleCreateQuestion"
+              />
+            </transition>
+          </div>
+        </template>
       </div>
     </div>
     <div class="text-center">
@@ -92,11 +101,13 @@
 import QuestionModal from './components/QuestionModal.vue'
 import QuestionCreateModal from './components/QuestionCreateModal.vue'
 import { mapGetters, mapActions } from 'vuex';
+import { VueLoading } from 'vue-loading-template'
 export default {
   name: 'QuestionIndex',
   components: {
     QuestionModal,
     QuestionCreateModal,
+    VueLoading
   },
   data() {
     return {
@@ -109,7 +120,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters('questions', ['questions']),
+    ...mapGetters('questions', ['questions', 'isLoading']),
     championsLeagueQuestions() {
       return this.questions.filter(question => {
         return question.category == 'champions_league';
@@ -186,7 +197,7 @@ export default {
 
 <style scoped>
 
- .modal {
+.modal {
   display: block;
 }
 

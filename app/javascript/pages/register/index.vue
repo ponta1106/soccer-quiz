@@ -132,7 +132,8 @@ export default {
           this.$router.push({ name: 'LoginIndex' })
         })
         .catch(err => {
-          console.log(err)
+          console.log(err.response)
+          alert('通信に失敗しました。インターネットが繋がっているか確認し、再度実行してください。')
         })
     }
   }
