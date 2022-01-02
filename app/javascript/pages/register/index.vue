@@ -18,10 +18,11 @@
           >ユーザー名</label>
           <input
             id="name"
-            v-model="user.name"
             type="text"
+            name="ユーザー名"
             class="form-control"
             placeholder="username"
+            v-model="user.name"
           >
           <span class="text-danger">{{ errors[0] }}</span>
         </ValidationProvider>
@@ -37,10 +38,11 @@
           >メールアドレス</label>
           <input
             id="email"
-            v-model="user.email"
             type="email"
+            name="メールアドレス"
             class="form-control"
             placeholder="test@example.com"
+            v-model="user.email"
           >
           <span class="text-danger">{{ errors[0] }}</span>
         </ValidationProvider>
@@ -57,10 +59,11 @@
           >パスワード</label>
           <input
             id="password"
-            v-model="user.password"
             type="password"
+            name="パスワード"
             class="form-control"
             placeholder="password"
+            v-model="user.password"
           >
           <span class="text-danger">{{ errors[0] }}</span>
         </ValidationProvider>
@@ -76,31 +79,36 @@
           >パスワード（確認）</label>
           <input
             id="password_confirmation"
-            v-model="user.password_confirmation"
             type="password"
+            name="パスワード"
             class="form-control"
             placeholder="password"
+            v-model="user.password_confirmation"
           >
           <span class="text-danger">{{ errors[0] }}</span>
         </ValidationProvider>
       </div>
-      <button
-        type="submit"
-        class="btn btn-secondary shadow"
-        @click="handleSubmit(register)"
-      >
-        登録
-      </button>
+      <div class="col-12 mb-3">
+        <button
+          type="submit"
+          class="btn btn-secondary shadow col-12"
+          @click="handleSubmit(register)"
+        >
+          登録
+        </button>
+      </div>
     </ValidationObserver>
-    <router-link
-      :to="{ name: 'LoginIndex' }"
-    >
-      <button
-        class="btn"
+    <div class="col-12">
+      <router-link
+        :to="{ name: 'LoginIndex' }"
       >
-        すでにアカウントをお持ちの方はこちら
-      </button>
-    </router-link>
+        <button
+          class="btn shadow col-12"
+        >
+          すでにアカウントをお持ちの方はこちら
+        </button>
+      </router-link>
+    </div>
   </div>
 </template>
 
@@ -124,7 +132,8 @@ export default {
           this.$router.push({ name: 'LoginIndex' })
         })
         .catch(err => {
-          console.log(err)
+          console.log(err.response)
+          alert('通信に失敗しました。インターネットが繋がっているか確認し、再度実行してください。')
         })
     }
   }

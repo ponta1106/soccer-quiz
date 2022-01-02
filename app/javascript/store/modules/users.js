@@ -25,7 +25,10 @@ const actions = {
       .then(res => {
         commit('setUsers', res.data)
       })
-      .catch(err => console.log(err.response));
+      .catch(err => {
+        console.log(err.response)
+        alert('通信に失敗しました。インターネットが繋がっているか確認し、再度実行してください。')
+      })
   },
   async loginUser({ commit }, user) {
     const sessionsResponse = await axios.post('sessions', user)
@@ -63,6 +66,10 @@ const actions = {
     return axios.patch(`users/${state.authUser.id}`, user)
       .then(res => {
         commit('setAuthUser', res.data)
+      })
+      .catch(err => {
+        console.log(err.response)
+        alert('通信に失敗しました。インターネットが繋がっているか確認し、再度実行してください。')
       })
   }
 }

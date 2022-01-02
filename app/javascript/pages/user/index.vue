@@ -9,69 +9,164 @@
       <p>{{ authUser.name }}</p>
       <p>{{ authUser.email }}</p>
       <button
+        v-if="authUser.name != 'ゲストユーザー'"
         class="btn btn-success col-6 col-sm-4"
         @click="handleShowUserEditModal"
       >
         ユーザーを編集
       </button>
+      <transition name="fade">
+        <UserEditModal
+          v-if="isVisibleUserEditModal"
+          @close-modal="handleCloseUserEditModal"
+        />
+      </transition>
     </div>
     <div class="h3 m-5">
       {{ authUser.name }}さんが作成した問題一覧
     </div>
-    <div
-      v-for="question in isAuthUserQuestions"
-      :key="question.id"
-      class="rounded shadow m-3 p-3"
-    >
-      <p>{{ question.title }}</p>
-      <button
-        class="btn btn-success col-6 col-sm-4"
-        @click="handleShowQuestionEditModal(question)"
+    <VueLoading
+      type="spin"
+      color="#333"
+      v-if="isLoading"
+      class="loadingIcon"
+      :size="{ width: '50px', height: '50px' }"
+    />
+    <template v-else>
+      <div class="h5 m-5">
+        チャンピオンズリーグ
+      </div>
+      <div
+        v-for="question in championsLeagueQuestions"
+        :key="question.id"
+        class="rounded shadow m-3 p-3"
       >
-        クイズを編集
-      </button>
-    </div>
-    <div class="d-flex justify-content-between">
-      <router-link
-        :to="{ name: 'TopIndex' }"
-        class="btn btn-secondary shadow m-3 col-4 router-link-active"
+        <p
+         class="mb-4"
+        >{{ question.title }}</p>
+        <button
+          v-if="authUser.name != 'ゲストユーザー'"
+          class="btn btn-success col-6 col-sm-4"
+          @click="handleShowQuestionEditModal(question)"
+        >
+          クイズを編集
+        </button>
+      </div>
+      <div class="h5 m-5">
+        セリエA
+      </div>
+      <div
+        v-for="question in serieAquestions"
+        :key="question.id"
+        class="rounded shadow m-3 p-3"
       >
-        トップへ
-      </router-link>
-      <router-link
-        :to="{ name: 'QuestionIndex' }"
-        class="btn btn-secondary shadow m-3 col-4 router-link-active"
+        <p
+         class="mb-4"
+        >{{ question.title }}</p>
+        <button
+          v-if="authUser.name != 'ゲストユーザー'"
+          class="btn btn-success col-6 col-sm-4"
+          @click="handleShowQuestionEditModal(question)"
+        >
+          クイズを編集
+        </button>
+      </div>
+      <div class="h5 m-5">
+        プレミアリーグ
+      </div>
+      <div
+        v-for="question in premierLeagueQuestions"
+        :key="question.id"
+        class="rounded shadow m-3 p-3"
       >
-        クイズ一覧
-      </router-link>
-    </div>
-    <transition name="fade">
-      <UserEditModal
-        v-if="isVisibleUserEditModal"
-        @close-modal="handleCloseUserEditModal"
-      />
-      <QuestionEditModal
-        v-if="isVisibleQuestionEditModal"
-        :question="questionEdit"
-        @close-modal="handleCloseQuestionEditModal"
-        @update-question="handleUpdateQuestion"
-        @delete-question="handleDeleteQuestion"
-      />
-    </transition>
+        <p
+         class="mb-4"
+        >{{ question.title }}</p>
+        <button
+          v-if="authUser.name != 'ゲストユーザー'"
+          class="btn btn-success col-6 col-sm-4"
+          @click="handleShowQuestionEditModal(question)"
+        >
+          クイズを編集
+        </button>
+      </div>
+      <div class="h5 m-5">
+        ラリーガ
+      </div>
+      <div
+        v-for="question in laLigaQuestions"
+        :key="question.id"
+        class="rounded shadow m-3 p-3"
+      >
+        <p
+         class="mb-4"
+        >{{ question.title }}</p>
+        <button
+          v-if="authUser.name != 'ゲストユーザー'"
+          class="btn btn-success col-6 col-sm-4"
+          @click="handleShowQuestionEditModal(question)"
+        >
+          クイズを編集
+        </button>
+      </div>
+      <div class="h5 m-5">
+        その他
+      </div>
+      <div
+        v-for="question in othersQuestions"
+        :key="question.id"
+        class="rounded shadow m-3 p-3"
+      >
+        <p
+         class="mb-4"
+        >{{ question.title }}</p>
+        <button
+          v-if="authUser.name != 'ゲストユーザー'"
+          class="btn btn-success col-6 col-sm-4"
+          @click="handleShowQuestionEditModal(question)"
+        >
+          クイズを編集
+        </button>
+      </div>
+      <div class="d-flex justify-content-between m-2">
+        <router-link
+          :to="{ name: 'TopIndex' }"
+          class="btn btn-secondary shadow m-3 col-4 router-link-active"
+        >
+          トップへ
+        </router-link>
+        <router-link
+          :to="{ name: 'QuestionIndex' }"
+          class="btn btn-secondary shadow m-3 col-4 router-link-active"
+        >
+          クイズ一覧
+        </router-link>
+      </div>
+      <transition name="fade">
+        <QuestionEditModal
+          v-if="isVisibleQuestionEditModal"
+          :question="questionEdit"
+          @close-modal="handleCloseQuestionEditModal"
+          @update-question="handleUpdateQuestion"
+          @delete-question="handleDeleteQuestion"
+        />
+      </transition>
+    </template>
   </div>
 </template>
 
 <script>
 import QuestionEditModal from '../question/components/QuestionEditModal'
 import UserEditModal from './components/UserEditModal'
-
 import { mapGetters, mapActions } from "vuex"
+import { VueLoading } from 'vue-loading-template'
 
 export default {
   name: 'UserIndex',
   components: {
     QuestionEditModal,
-    UserEditModal
+    UserEditModal,
+    VueLoading
   },
   data() {
     return {
@@ -82,12 +177,37 @@ export default {
   },
   computed: {
     ...mapGetters("users", ["authUser"]),
-    ...mapGetters('questions', ['questions']),
+    ...mapGetters('questions', ['questions', 'isLoading']),
     isAuthUserQuestions() {
       return this.questions.filter(question => {
         return question.user_id == this.authUser.id
       })
-    }
+    },
+    championsLeagueQuestions() {
+      return this.isAuthUserQuestions.filter(question => {
+        return question.category == 'champions_league'
+      })
+    },
+    serieAquestions() {
+      return this.isAuthUserQuestions.filter(question => {
+        return question.category == 'serieA'
+      })
+    },
+    premierLeagueQuestions() {
+      return this.isAuthUserQuestions.filter(question => {
+        return question.category == 'premier_league'
+      })
+    },
+    laLigaQuestions() {
+      return this.isAuthUserQuestions.filter(question => {
+        return question.category == 'la_liga'
+      })
+    },
+    othersQuestions() {
+      return this.isAuthUserQuestions.filter(question => {
+        return question.category == 'others';
+      })
+    },
   },
   created() {
     this.fetchQuestions();

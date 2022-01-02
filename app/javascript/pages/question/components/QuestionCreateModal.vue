@@ -18,10 +18,10 @@
                       <label for="title">問題文</label>
                       <input
                         id="title"
-                        v-model="question.title"
                         type="text"
                         name="問題文"
                         class="form-control"
+                        v-model="question.title"
                       >
                       <span class="text-danger">{{ errors[0] }}</span>
                     </ValidationProvider>
@@ -34,10 +34,10 @@
                       <label for="choice1">選択肢１</label>
                       <input
                         id="choice1"
-                        v-model="question.choice1"
                         type="text"
                         name="選択肢１"
                         class="form-control"
+                        v-model="question.choice1"
                       >
                       <span class="text-danger">{{ errors[0] }}</span>
                     </ValidationProvider>
@@ -52,8 +52,8 @@
                         id="choice2"
                         v-model="question.choice2"
                         type="text"
-                        name="選択肢２"
                         class="form-control"
+                        name="選択肢２"
                       >
                       <span class="text-danger">{{ errors[0] }}</span>
                     </ValidationProvider>
@@ -66,10 +66,10 @@
                       <label for="choice3">選択肢３</label>
                       <input
                         id="choice3"
-                        v-model="question.choice3"
                         type="text"
                         name="選択肢３"
                         class="form-control"
+                        v-model="question.choice3"
                       >
                       <span class="text-danger">{{ errors[0] }}</span>
                     </ValidationProvider>
@@ -82,10 +82,10 @@
                       <label for="choice4">選択肢４</label>
                       <input
                         id="choice4"
-                        v-model="question.choice4"
                         type="text"
                         name="選択肢４"
                         class="form-control"
+                        v-model="question.choice4"
                       >
                       <span class="text-danger">{{ errors[0] }}</span>
                     </ValidationProvider>
@@ -100,8 +100,8 @@
                       <label for="answer">答えの選択肢</label>
                       <select
                         id="answer"
-                        v-model="question.answer"
                         name="答えの選択肢"
+                        v-model="question.answer"
                       >
                         <option value="choice1">
                           選択肢1
@@ -127,8 +127,8 @@
                       <label for="category">クイズのカテゴリー</label>
                       <select
                         id="category"
-                        v-model="question.category"
                         name="クイズのカテゴリー"
+                        v-model="question.category"
                       >
                         <option value="champions_league">
                           チャンピオンズリーグ
@@ -157,10 +157,10 @@
                       <label for="explanation">説明文</label>
                       <textarea
                         id="explanation"
-                        v-model="question.explanation"
                         name="説明文"
                         class="form-control"
                         rows="5"
+                        v-model="question.explanation"
                       />
                       <span class="text-danger">{{ errors[0] }}</span>
                     </ValidationProvider>
@@ -169,18 +169,22 @@
               </div>
             </div>
             <div class="d-flex modal-footer justify-content-between mt-3">
-              <button
-                class="btn btn-secondary shadow"
-                @click="handleSubmit(handleCreateQuestion)"
-              >
-                追加
-              </button>
-              <button
-                class="btn shadow"
-                @click="handleCloseModal"
-              >
-                閉じる
-              </button>
+              <div class="col-4">
+                <button
+                  class="btn btn-secondary shadow col-12"
+                  @click="handleSubmit(handleCreateQuestion)"
+                >
+                  追加
+                </button>
+              </div>
+              <div class="col-4">
+                <button
+                  class="btn shadow col-12"
+                  @click="handleCloseModal"
+                >
+                  閉じる
+                </button>
+              </div>
             </div>
           </div>
         </div>

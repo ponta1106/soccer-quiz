@@ -18,10 +18,11 @@
           >メールアドレス</label>
           <input
             id="email"
-            v-model="user.email"
             type="email"
+            name="メールアドレス"
             class="form-control"
             placeholder="test@example.com"
+            v-model="user.email"
           >
           <span class="text-danger">{{ errors[0] }}</span>
         </ValidationProvider>
@@ -37,31 +38,45 @@
           >パスワード</label>
           <input
             id="password"
-            v-model="user.password"
             type="password"
+            name="パスワード"
             class="form-control"
             placeholder="password"
+            v-model="user.password"
           >
           <span class="text-danger">{{ errors[0] }}</span>
         </ValidationProvider>
       </div>
+      <div class="col-12 mb-3">
+        <button
+          type="submit"
+          class="btn btn-secondary shadow col-12"
+          @click="handleSubmit(login)"
+        >
+          ログイン
+        </button>
+      </div>
+    </ValidationObserver>
+    <div class="col-12 mb-3">
       <button
         type="submit"
-        class="btn btn-secondary shadow"
-        @click="handleSubmit(login)"
+        class="btn btn-success shadow col-12"
+        @click="guestLogin"
       >
-        ログイン
+        ゲストとしてログイン
       </button>
-    </ValidationObserver>
-    <router-link
-      :to="{ name: 'RegisterIndex' }"
-    >
-      <button
-        class="btn"
+    </div>
+    <div class="col-12">
+      <router-link
+        :to="{ name: 'RegisterIndex' }"
       >
-        はじめての方はこちら
-      </button>
-    </router-link>
+        <button
+          class="btn shadow col-12"
+        >
+          はじめての方はこちら
+        </button>
+      </router-link>
+    </div>
   </div>
 </template>
 
@@ -73,8 +88,12 @@ export default {
   data() {
     return {
       user: {
-        email: "",
-        password: "",
+        email: '',
+        password: '',
+      },
+      guestUser: {
+        email: 'guest@example.com',
+        password: 'guest'
       }
     }
   },
@@ -89,6 +108,16 @@ export default {
         this.$router.push({ name: 'QuestionIndex' })
       } catch (error) {
         console.log(error);
+        alert('通信に失敗しました。インターネットが繋がっているか確認し、再度実行してください。')
+      }
+    },
+    async guestLogin() {
+      try {
+        await this.loginUser(this.guestUser);
+        this.$router.push({ name: 'QuestionIndex' })
+      } catch (error) {
+        console.log(error);
+        alert('通信に失敗しました。インターネットが繋がっているか確認し、再度実行してください。')
       }
     }
   }
