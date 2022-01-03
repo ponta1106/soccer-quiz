@@ -142,6 +142,12 @@
                         <option value="la_liga">
                           ラリーガ
                         </option>
+                        <option value="bundes_liga">
+                          ブンデスリーガ
+                        </option>
+                        <option value="league_1">
+                          リーグアン
+                        </option>
                         <option value="others">
                           その他
                         </option>

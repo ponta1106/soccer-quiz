@@ -18,31 +18,43 @@
               class="btn shadow p-2 m-2"
               @click="handleOpenChampionsLeagueQuestionModal"
             >
-              チャンピオンズリーグ：{{ championsLeagueQuestions.length }}問
+              チャンピオンズリーグ： 全{{ championsLeagueQuestions.length }}問
             </button>
             <button
               class="btn shadow p-2 m-2"
               @click="handleOpenSerieAquestionModal"
             >
-              セリエA：{{ serieAquestions.length }}問
+              セリエA： 全{{ serieAquestions.length }}問
             </button>
             <button
               class="btn shadow p-2 m-2"
               @click="handleOpenPremierLeagueQuestionModal"
             >
-              プレミアリーグ：{{ premierLeagueQuestions.length }}問
+              プレミアリーグ： 全{{ premierLeagueQuestions.length }}問
             </button>
             <button
               class="btn shadow p-2 m-2"
               @click="handleOpenLaLigaQuestionModal"
             >
-              ラリーガ：{{ laLigaQuestions.length }}問
+              ラリーガ： 全{{ laLigaQuestions.length }}問
+            </button>
+            <button
+              class="btn shadow p-2 m-2"
+              @click="handleOpenBundesLigaQuestionModal"
+            >
+              ブンデスリーガ： 全{{ bundesLigaQuestions.length }}問
+            </button>
+            <button
+              class="btn shadow p-2 m-2"
+              @click="handleOpenLeague1QuestionModal"
+            >
+              リーグアン： 全{{ league1Questions.length }}問
             </button>
             <button
               class="btn shadow p-2 m-2"
               @click="handleOpenOthersQuestionModal"
             >
-              その他：{{ othersQuestions.length }}問
+              その他： 全{{ othersQuestions.length }}問
             </button>
             <button
               class="btn btn-secondary shadow p-2 m-2"
@@ -69,6 +81,16 @@
               <QuestionModal
                 v-if="isVisibleLaLigaQuestionModal"
                 :questions="laLigaQuestions"
+                @close-modal="handleCloseModal"
+              />
+              <QuestionModal
+                v-if="isVisibleBundesLigaQuestionModal"
+                :questions="bundesLigaQuestions"
+                @close-modal="handleCloseModal"
+              />
+              <QuestionModal
+                v-if="isVisibleLeague1QuestionModal"
+                :questions="league1Questions"
                 @close-modal="handleCloseModal"
               />
               <QuestionModal
@@ -115,6 +137,8 @@ export default {
       isVisibleLaLigaQuestionModal: false,
       isVisibleOthersQuestionModal: false,
       isVisibleQuestionCreateModal: false,
+      isVisibleBundesLigaQuestionModal: false,
+      isVisibleLeague1QuestionModal: false,
       isVisiblePremierLeagueQuestionModal: false,
       isVisibleChampionsLeagueQuestionModal: false,
     }
@@ -139,6 +163,16 @@ export default {
     laLigaQuestions() {
       return this.questions.filter(question => {
         return question.category == 'la_liga';
+      })
+    },
+    bundesLigaQuestions() {
+      return this.questions.filter(question => {
+        return question.category == 'bundes_liga';
+      })
+    },
+    league1Questions() {
+      return this.questions.filter(question => {
+        return question.category == 'league_1';
       })
     },
     othersQuestions() {
@@ -173,6 +207,12 @@ export default {
     handleOpenLaLigaQuestionModal() {
       this.isVisibleLaLigaQuestionModal = true;
     },
+    handleOpenBundesLigaQuestionModal() {
+      this.isVisibleBundesLigaQuestionModal = true;
+    },
+    handleOpenLeague1QuestionModal() {
+      this.isVisibleLeague1QuestionModal = true;
+    },
     handleOpenOthersQuestionModal() {
       this.isVisibleOthersQuestionModal = true;
     },
@@ -184,6 +224,8 @@ export default {
       this.isVisibleSerieAquestionModal = false;
       this.isVisiblePremierLeagueQuestionModal = false;
       this.isVisibleLaLigaQuestionModal = false;
+      this.isVisibleBundesLigaQuestionModal = false;
+      this.isVisibleLeague1QuestionModal = false;
       this.isVisibleOthersQuestionModal = false;
     },
     handleCloseQuestionCreateModal() {
