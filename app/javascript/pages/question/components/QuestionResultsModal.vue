@@ -28,10 +28,13 @@
             </template>
           </div>
           <div class="modal-footer">
-            <a href="https://twitter.com/intent/tweet?url=https://salty-sands-43689.herokuapp.com/&text=欧州サッカークイズ&hashtags=欧州サッカー,サッカー,クイズ" class="btn btn-primary shadow col-5" target="_blank">
+          <button
+            class="btn btn-info text-white shadow col-5"
+            @click="twitterShare"
+          >
             <font-awesome-icon :icon="['fab', 'twitter']"/>
-              シェアする
-            </a>
+            シェアする
+          </button>
             <button
               class="btn shadow col-4"
               @click="closeModal"
@@ -76,9 +79,12 @@ export default {
     closeModal() {
       this.$emit('close-question-results-modal');
     },
-    saveAndCloseModal() {
-      this.$emit('close-question-results-modal');
-    }
+    twitterShare(){
+      //シェアする画面を設定
+      var shareURL = 'https://twitter.com/intent/tweet?text=' + "欧州サッカークイズ" + "%20%23欧州サッカー" + "%20%23クイズ" + "%20%23サッカー" + '&url=' + "https://salty-sands-43689.herokuapp.com/";
+      //シェア用の画面へ移行
+      window.open(shareURL, '_blank')
+    },
   }
 }
 </script>
