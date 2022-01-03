@@ -5,13 +5,6 @@
         <h3 class="text-center">
           クイズ選択画面
         </h3>
-        <a
-          :href=sns.twitter
-          class="btn btn-primary shadow col-5"
-          target="_blank">
-          <font-awesome-icon :icon="['fab', 'twitter']"/>
-          シェアする
-        </a>
         <VueLoading
           type="spin"
           color="#333"
@@ -21,6 +14,14 @@
         />
         <template v-else>
           <div class="d-flex flex-column">
+            <a
+              :href=sns.twitter
+              class="btn btn-primary shadow p-2 m-2"
+              target="_blank">
+              <font-awesome-icon :icon="['fab', 'twitter']"/>
+              シェアする
+            </a>
+            <a href="#" class="btn btn-success shadow p-2 m-2">シェアする</a>
             <button
               class="btn shadow p-2 m-2"
               @click="handleOpenChampionsLeagueQuestionModal"
