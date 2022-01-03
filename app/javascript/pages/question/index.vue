@@ -13,13 +13,6 @@
           :size="{ width: '50px', height: '50px' }"
         />
         <template v-else>
-          <button
-            class="btn btn-info text-white shadow col-12"
-            @click="twitterShare"
-          >
-            <font-awesome-icon :icon="['fab', 'twitter']"/>
-            シェアする
-          </button>
           <div class="d-flex flex-column">
             <button
               class="btn shadow p-2 m-2"
