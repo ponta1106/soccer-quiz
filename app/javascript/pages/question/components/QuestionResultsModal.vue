@@ -28,12 +28,8 @@
             </template>
           </div>
           <div class="modal-footer">
-            <a
-              href="https://twitter.com/intent/tweet?url=https://salty-sands-43689.herokuapp.com/&text=欧州サッカークイズ&hashtags=欧州サッカー,サッカー,クイズ"
-              class="btn btn-primary shadow col-5"
-              target="_blank"
-            >
-              <font-awesome-icon :icon="['fab', 'twitter']"/>
+            <a href="https://twitter.com/intent/tweet?url=https://salty-sands-43689.herokuapp.com/&text=欧州サッカークイズ&hashtags=欧州サッカー,サッカー,クイズ" class="btn btn-primary shadow col-5" target="_blank">
+            <font-awesome-icon :icon="['fab', 'twitter']"/>
               シェアする
             </a>
             <button
@@ -91,10 +87,6 @@ export default {
 
   .modal {
     display: block;
-  }
-
-  a {
-    color: white;
   }
 
 </style>

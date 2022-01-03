@@ -14,12 +14,8 @@
         />
         <template v-else>
           <div class="d-flex flex-column">
-            <a
-              href="https://twitter.com/intent/tweet?url=https://salty-sands-43689.herokuapp.com/&text=欧州サッカークイズ&hashtags=欧州サッカー,サッカー,クイズ"
-              class="btn btn-primary shadow col-5"
-              target="_blank"
-            >
-              <font-awesome-icon :icon="['fab', 'twitter']"/>
+            <a href="https://twitter.com/intent/tweet?url=https://salty-sands-43689.herokuapp.com/&text=欧州サッカークイズ&hashtags=欧州サッカー,サッカー,クイズ" class="btn btn-primary shadow col-5">
+            <font-awesome-icon :icon="['fab', 'twitter']"/>
               シェアする
             </a>
             <button
