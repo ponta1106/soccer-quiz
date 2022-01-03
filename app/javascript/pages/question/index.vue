@@ -15,16 +15,13 @@
         <template v-else>
           <div class="d-flex flex-column">
             <a
-              :href="sns.twitter"
-              class="btn btn-primary shadow p-2 m-2"
-              target="_blank">
+              href="https://twitter.com/intent/tweet?url=https://salty-sands-43689.herokuapp.com/&text=欧州サッカークイズ&hashtags=欧州サッカー,サッカー,クイズ"
+              class="btn btn-primary shadow col-5"
+              target="_blank"
+            >
               <font-awesome-icon :icon="['fab', 'twitter']"/>
               シェアする
             </a>
-            <a
-              href="https://reffect.co.jp/vue"
-              target="_blank"
-              class="btn btn-success shadow p-2 m-2">シェアする</a>
             <button
               class="btn shadow p-2 m-2"
               @click="handleOpenChampionsLeagueQuestionModal"
@@ -122,9 +119,6 @@ export default {
   },
   data() {
     return {
-      sns: {
-        twitter: 'https://twitter.com/intent/tweet?url=https://salty-sands-43689.herokuapp.com/&text=欧州サッカークイズ&hashtags=欧州サッカー,サッカー,クイズ',
-      },
       isVisibleSerieAquestionModal: false,
       isVisibleLaLigaQuestionModal: false,
       isVisibleOthersQuestionModal: false,

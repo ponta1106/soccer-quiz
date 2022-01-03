@@ -29,9 +29,10 @@
           </div>
           <div class="modal-footer">
             <a
-              :href="sns.twitter"
+              href="https://twitter.com/intent/tweet?url=https://salty-sands-43689.herokuapp.com/&text=欧州サッカークイズ&hashtags=欧州サッカー,サッカー,クイズ"
               class="btn btn-primary shadow col-5"
-              target="_blank">
+              target="_blank"
+            >
               <font-awesome-icon :icon="['fab', 'twitter']"/>
               シェアする
             </a>
@@ -61,9 +62,6 @@ export default {
   data() {
     return {
       correct: false,
-      sns: {
-        twitter: 'https://twitter.com/intent/tweet?url=https://salty-sands-43689.herokuapp.com/&text=欧州サッカークイズ&hashtags=欧州サッカー,サッカー,クイズ',
-      },
     }
   },
   computed: {
