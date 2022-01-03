@@ -5,6 +5,7 @@
         <h3 class="text-center">
           クイズ選択画面
         </h3>
+        <font-awesome-icon :icon="['fab', 'twitter']"/>
         <VueLoading
           type="spin"
           color="#333"
