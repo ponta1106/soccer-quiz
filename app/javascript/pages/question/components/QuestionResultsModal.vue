@@ -32,8 +32,10 @@
               :href=sns.twitter
               class="btn btn-primary shadow col-6"
               target="_blank">
-              <font-awesome-icon :icon="['fab', 'twitter']"/>
-              シェアする</a>
+              <!-- <font-awesome-icon :icon="['fab', 'twitter']"/>
+              シェアする</a> -->
+              シェアする
+            </a>
             <button
               class="btn shadow col-4"
               @click="closeModal"
