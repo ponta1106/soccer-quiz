@@ -28,6 +28,12 @@
             </template>
           </div>
           <div class="modal-footer">
+            <a
+              :href=sns.twitter
+              class="btn btn-primary shadow col-6"
+              target="_blank">
+              <font-awesome-icon :icon="['fab', 'twitter']"/>
+              シェアする</a>
             <button
               class="btn shadow col-4"
               @click="closeModal"
@@ -54,6 +60,9 @@ export default {
   data() {
     return {
       correct: false,
+      sns: {
+        twitter: 'https://twitter.com/intent/tweet?url=https://salty-sands-43689.herokuapp.com/&text=欧州サッカークイズ&hashtags=欧州サッカー,サッカー,クイズ',
+      },
     }
   },
   computed: {
@@ -83,6 +92,10 @@ export default {
 
   .modal {
     display: block;
+  }
+
+  a {
+    color: white;
   }
 
 </style>
