@@ -6,6 +6,7 @@ import UserIndex from "../pages/user/index";
 import QuestionIndex from "../pages/question/index";
 import RegisterIndex from "../pages/register/index";
 import LoginIndex from "../pages/login/index";
+import ContactIndex from "../pages/contact/index";
 
 Vue.use(Router)
 
@@ -37,6 +38,11 @@ const router = new Router ({
       path: "/login",
       component: LoginIndex,
       name: "LoginIndex",
+    },
+    {
+      path: "/contact",
+      component: ContactIndex,
+      name: "ContactIndex",
     }
   ]
 });
