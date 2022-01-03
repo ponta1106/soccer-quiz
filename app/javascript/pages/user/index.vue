@@ -110,6 +110,44 @@
         </button>
       </div>
       <div class="h5 m-5">
+        ブンデスリーガ
+      </div>
+      <div
+        v-for="question in bundesLigaQuestions"
+        :key="question.id"
+        class="rounded shadow m-3 p-3"
+      >
+        <p
+         class="mb-4"
+        >{{ question.title }}</p>
+        <button
+          v-if="authUser.name != 'ゲストユーザー'"
+          class="btn btn-success col-6 col-sm-4"
+          @click="handleShowQuestionEditModal(question)"
+        >
+          クイズを編集
+        </button>
+      </div>
+      <div class="h5 m-5">
+        リーグアン
+      </div>
+      <div
+        v-for="question in league1Questions"
+        :key="question.id"
+        class="rounded shadow m-3 p-3"
+      >
+        <p
+         class="mb-4"
+        >{{ question.title }}</p>
+        <button
+          v-if="authUser.name != 'ゲストユーザー'"
+          class="btn btn-success col-6 col-sm-4"
+          @click="handleShowQuestionEditModal(question)"
+        >
+          クイズを編集
+        </button>
+      </div>
+      <div class="h5 m-5">
         その他
       </div>
       <div
@@ -201,6 +239,16 @@ export default {
     laLigaQuestions() {
       return this.isAuthUserQuestions.filter(question => {
         return question.category == 'la_liga'
+      })
+    },
+    bundesLigaQuestions() {
+      return this.isAuthUserQuestions.filter(question => {
+        return question.category == 'bundes_liga'
+      })
+    },
+    league1Questions() {
+      return this.isAuthUserQuestions.filter(question => {
+        return question.category == 'league_1'
       })
     },
     othersQuestions() {

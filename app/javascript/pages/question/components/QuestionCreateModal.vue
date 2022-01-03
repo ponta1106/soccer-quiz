@@ -130,7 +130,7 @@
                         name="クイズのカテゴリー"
                         v-model="question.category"
                       >
-                        <option value="champions_league">
+                       <option value="champions_league">
                           チャンピオンズリーグ
                         </option>
                         <option value="serieA">
@@ -141,6 +141,12 @@
                         </option>
                         <option value="la_liga">
                           ラリーガ
+                        </option>
+                        <option value="bundes_liga">
+                          ブンデスリーガ
+                        </option>
+                        <option value="league_1">
+                          リーグアン
                         </option>
                         <option value="others">
                           その他
