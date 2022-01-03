@@ -15,13 +15,16 @@
         <template v-else>
           <div class="d-flex flex-column">
             <a
-              :href=sns.twitter
+              :href="sns.twitter"
               class="btn btn-primary shadow p-2 m-2"
               target="_blank">
               <font-awesome-icon :icon="['fab', 'twitter']"/>
               シェアする
             </a>
-            <a href="#" class="btn btn-success shadow p-2 m-2">シェアする</a>
+            <a
+              href="https://reffect.co.jp/vue"
+              target="_blank"
+              class="btn btn-success shadow p-2 m-2">シェアする</a>
             <button
               class="btn shadow p-2 m-2"
               @click="handleOpenChampionsLeagueQuestionModal"

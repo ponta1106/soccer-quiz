@@ -29,7 +29,7 @@
           </div>
           <div class="modal-footer">
             <a
-              :href=sns.twitter
+              :href="sns.twitter"
               class="btn btn-primary shadow col-5"
               target="_blank">
               <font-awesome-icon :icon="['fab', 'twitter']"/>
