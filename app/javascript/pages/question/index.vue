@@ -5,7 +5,13 @@
         <h3 class="text-center">
           クイズ選択画面
         </h3>
-        <font-awesome-icon :icon="['fab', 'twitter']"/>
+        <a
+          :href=sns.twitter
+          class="btn btn-primary shadow col-5"
+          target="_blank">
+          <font-awesome-icon :icon="['fab', 'twitter']"/>
+          シェアする
+        </a>
         <VueLoading
           type="spin"
           color="#333"
@@ -112,6 +118,9 @@ export default {
   },
   data() {
     return {
+      sns: {
+        twitter: 'https://twitter.com/intent/tweet?url=https://salty-sands-43689.herokuapp.com/&text=欧州サッカークイズ&hashtags=欧州サッカー,サッカー,クイズ',
+      },
       isVisibleSerieAquestionModal: false,
       isVisibleLaLigaQuestionModal: false,
       isVisibleOthersQuestionModal: false,
