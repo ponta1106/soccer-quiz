@@ -10,7 +10,7 @@
     </div>
     <div class="contact">
       <button
-        class="btn btn-info text-white shadow"
+        class="btn btn-info text-white shadow col-8 col-sm-4"
         @click="contactAdmin"
       >
         <font-awesome-icon :icon="['fab', 'twitter']"/>
