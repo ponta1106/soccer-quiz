@@ -50,6 +50,14 @@
                 </router-link>
               </li>
           </template>
+          <li class="nav-item">
+            <router-link
+              :to="{ name: 'ContactIndex' }"
+              class="nav-link"
+            >
+              お問合せ
+            </router-link>
+          </li>
           </ul>
         </div>
       </div>
