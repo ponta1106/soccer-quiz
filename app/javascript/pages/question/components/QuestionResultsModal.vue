@@ -80,9 +80,31 @@ export default {
       this.$emit('close-question-results-modal');
     },
     twitterShare(){
-      //シェアする画面を設定
-      var shareURL = 'https://twitter.com/intent/tweet?text=' + "欧州サッカークイズ" + "%20%23欧州サッカー" + "%20%23クイズ" + "%20%23サッカー" + '&url=' + "https://salty-sands-43689.herokuapp.com/";
-      //シェア用の画面へ移行
+      var shareURL =
+      'https://twitter.com/intent/tweet?text='
+      +
+      '欧州サッカークイズ'
+      +
+      '%0a'
+      +
+      `スコアは ${this.numberOfQuestions}問中${this.score}点でした!`
+      +
+      '%0a'
+      +
+      '%20%23欧州サッカー'
+      +
+      '%0a'
+      +
+      '%20%23サッカークイズ'
+      +
+      '%0a'
+      +
+      '%20%23soccer'
+      +
+      '%0a'
+      +
+      '&url='
+      +'https://salty-sands-43689.herokuapp.com/';
       window.open(shareURL, '_blank')
     },
   }

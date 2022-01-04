@@ -6,7 +6,7 @@
     </div>
     <div class="message mb-5">
       <p>こんにちは、このサイトの管理人ぽんたです。</p>
-      <p>このアプリについて、ご意見ご要望などありましたら、<br>私のTwitterまでリプください。</p>
+      <p>このアプリについて、ご意見ご要望などありましたら、<br>私のTwitterまでご連絡ください。</p>
     </div>
     <div class="contact">
       <button
