@@ -8,7 +8,7 @@
           <div class="modal-header">
             <div class="container text-center">
               <img
-                src="../../../assets/images/hamada.png"
+                src="../../../assets/hamada.png"
                 alt="show-results"
                 style="width: 300px;"
               >

@@ -2,7 +2,7 @@
   <div class="container text-center">
     <h3>お問合せ</h3>
     <div class="adimin-icon">
-      <img src="../../assets/images/turtle.png" alt="icon" width="200px;">
+      <img src="../../assets/turtle.png" alt="icon" width="200px;">
     </div>
     <div class="message mb-5">
       <p>こんにちは、このサイトの管理人ぽんたです。</p>

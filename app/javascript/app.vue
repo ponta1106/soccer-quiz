@@ -26,8 +26,7 @@ export default {
     color: #555;
     min-height: 100vh;
     font-family: 'Kosugi Maru', sans-serif;
-    background-size: cover;
-    background-position: center;
+    background-color: #e5e2df;
   }
 
   .fade-enter-active, .fade-leave-active {
