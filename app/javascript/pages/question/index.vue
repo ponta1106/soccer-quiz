@@ -1,172 +1,172 @@
 <template>
   <div class="container mt-5 mb-5">
-      <h3 class="text-center mb-5">
-        クイズ選択画面
-      </h3>
-      <VueLoading
-        type="spin"
-        color="#333"
-        v-if="isLoading"
-        class="loadingIcon"
-        :size="{ width: '50px', height: '50px' }"
-      />
-      <template v-else>
-        <div class="d-flex flex-wrap justify-content-around">
-          <div
-            class="card m-2"
-            style="width: 18rem;"
-            @click="handleOpenChampionsLeagueQuestionModal"
-          >
-            <img
-              src="../../assets/cl_logo.png" class="card-img-top">
-            <div class="card-body">
-              <p class="card-text">
-                チャンピオンズリーグ： 全{{ championsLeagueQuestions.length }}問
-              </p>
-            </div>
+    <h3 class="text-center mb-5">
+      クイズ選択画面
+    </h3>
+    <VueLoading
+      type="bubbles"
+      color="#555"
+      v-if="isLoading"
+      class="loadingIcon"
+      :size="{ width: '150px', height: '150px' }"
+    />
+    <template v-else>
+      <div class="d-flex flex-wrap justify-content-around">
+        <div
+          class="card m-2"
+          style="width: 18rem;"
+          @click="handleOpenChampionsLeagueQuestionModal"
+        >
+          <img
+            src="../../assets/cl_logo.png" class="card-img-top">
+          <div class="card-body">
+            <p class="card-text">
+              チャンピオンズリーグ： 全{{ championsLeagueQuestions.length }}問
+            </p>
           </div>
-          <div
-            class="card m-2"
-            style="width: 18rem;"
-            @click="handleOpenSerieAquestionModal"
-          >
-            <img
-              src="../../assets/serie_a_logo.png"
-              class="card-img-top">
-            <div class="card-body">
-              <p class="card-text">
-                セリエA： 全{{ serieAquestions.length }}問
-              </p>
-            </div>
-          </div>
-          <div
-            class="card m-2"
-            style="width: 18rem;"
-            @click="handleOpenPremierLeagueQuestionModal"
-          >
-            <img
-              src="../../assets/pl_logo.png"
-              class="card-img-top">
-            <div class="card-body">
-              <p class="card-text">
-                プレミアリーグ： 全{{ premierLeagueQuestions.length }}問
-              </p>
-            </div>
-          </div>
-          <div
-            class="card m-2"
-            style="width: 18rem;"
-            @click="handleOpenLaLigaQuestionModal"
-          >
-            <img
-              src="../../assets/la_liga_logo.png"
-              class="card-img-top">
-            <div class="card-body">
-              <p class="card-text">
-                ラリーガ： 全{{ laLigaQuestions.length }}問
-              </p>
-            </div>
-          </div>
-          <div
-            class="card m-2"
-            style="width: 18rem;"
-            @click="handleOpenBundesLigaQuestionModal"
-          >
-            <img
-              src="../../assets/bundes_liga_logo.png"
-              class="card-img-top">
-            <div class="card-body">
-              <p class="card-text">
-                ブンデスリーガ： 全{{ bundesLigaQuestions.length }}問
-              </p>
-            </div>
-          </div>
-          <div
-            class="card m-2"
-            style="width: 18rem;"
-            @click="handleOpenLeague1QuestionModal"
-          >
-            <img
-              src="../../assets/league_1_logo.png"
-              class="card-img-top">
-            <div class="card-body">
-              <p class="card-text">
-                リーグアン： 全{{ league1Questions.length }}問
-              </p>
-            </div>
-          </div>
-          <div
-            class="card m-2"
-            style="width: 18rem;"
-            @click="handleOpenOthersQuestionModal"
-          >
-            <img
-              src="../../assets/others.png"
-              class="card-img-top">
-            <div class="card-body">
-              <p class="card-text">
-                その他： 全{{ othersQuestions.length }}問
-              </p>
-            </div>
-          </div>
-          <div
-            class="card m-2"
-            style="width: 18rem;"
-            @click="handleShowQuestionCreateModal"
-          >
-            <img
-              src="../../assets/quiz.png"
-              class="card-img-top">
-            <div class="card-body">
-              <p class="card-text">
-                クイズを作成する
-              </p>
-            </div>
-          </div>
-          <transition name="fade">
-            <QuestionModal
-              v-if="isVisibleChampionsLeagueQuestionModal"
-              :questions="championsLeagueQuestions"
-              @close-modal="handleCloseModal"
-            />
-            <QuestionModal
-              v-if="isVisibleSerieAquestionModal"
-              :questions="serieAquestions"
-              @close-modal="handleCloseModal"
-            />
-            <QuestionModal
-              v-if="isVisiblePremierLeagueQuestionModal"
-              :questions="premierLeagueQuestions"
-              @close-modal="handleCloseModal"
-            />
-            <QuestionModal
-              v-if="isVisibleLaLigaQuestionModal"
-              :questions="laLigaQuestions"
-              @close-modal="handleCloseModal"
-            />
-            <QuestionModal
-              v-if="isVisibleBundesLigaQuestionModal"
-              :questions="bundesLigaQuestions"
-              @close-modal="handleCloseModal"
-            />
-            <QuestionModal
-              v-if="isVisibleLeague1QuestionModal"
-              :questions="league1Questions"
-              @close-modal="handleCloseModal"
-            />
-            <QuestionModal
-              v-if="isVisibleOthersQuestionModal"
-              :questions="othersQuestions"
-              @close-modal="handleCloseModal"
-            />
-            <QuestionCreateModal
-              v-if="isVisibleQuestionCreateModal"
-              @close-modal="handleCloseQuestionCreateModal"
-              @create-question="handleCreateQuestion"
-            />
-          </transition>
         </div>
-      </template>
+        <div
+          class="card m-2"
+          style="width: 18rem;"
+          @click="handleOpenSerieAquestionModal"
+        >
+          <img
+            src="../../assets/serie_a_logo.png"
+            class="card-img-top">
+          <div class="card-body">
+            <p class="card-text">
+              セリエA： 全{{ serieAquestions.length }}問
+            </p>
+          </div>
+        </div>
+        <div
+          class="card m-2"
+          style="width: 18rem;"
+          @click="handleOpenPremierLeagueQuestionModal"
+        >
+          <img
+            src="../../assets/pl_logo.png"
+            class="card-img-top">
+          <div class="card-body">
+            <p class="card-text">
+              プレミアリーグ： 全{{ premierLeagueQuestions.length }}問
+            </p>
+          </div>
+        </div>
+        <div
+          class="card m-2"
+          style="width: 18rem;"
+          @click="handleOpenLaLigaQuestionModal"
+        >
+          <img
+            src="../../assets/la_liga_logo.png"
+            class="card-img-top">
+          <div class="card-body">
+            <p class="card-text">
+              ラリーガ： 全{{ laLigaQuestions.length }}問
+            </p>
+          </div>
+        </div>
+        <div
+          class="card m-2"
+          style="width: 18rem;"
+          @click="handleOpenBundesLigaQuestionModal"
+        >
+          <img
+            src="../../assets/bundes_liga_logo.png"
+            class="card-img-top">
+          <div class="card-body">
+            <p class="card-text">
+              ブンデスリーガ： 全{{ bundesLigaQuestions.length }}問
+            </p>
+          </div>
+        </div>
+        <div
+          class="card m-2"
+          style="width: 18rem;"
+          @click="handleOpenLeague1QuestionModal"
+        >
+          <img
+            src="../../assets/league_1_logo.png"
+            class="card-img-top">
+          <div class="card-body">
+            <p class="card-text">
+              リーグアン： 全{{ league1Questions.length }}問
+            </p>
+          </div>
+        </div>
+        <div
+          class="card m-2"
+          style="width: 18rem;"
+          @click="handleOpenOthersQuestionModal"
+        >
+          <img
+            src="../../assets/others.png"
+            class="card-img-top">
+          <div class="card-body">
+            <p class="card-text">
+              その他： 全{{ othersQuestions.length }}問
+            </p>
+          </div>
+        </div>
+        <div
+          class="card m-2"
+          style="width: 18rem;"
+          @click="handleShowQuestionCreateModal"
+        >
+          <img
+            src="../../assets/quiz.png"
+            class="card-img-top">
+          <div class="card-body">
+            <p class="card-text">
+              クイズを作成する
+            </p>
+          </div>
+        </div>
+        <transition name="fade">
+          <QuestionModal
+            v-if="isVisibleChampionsLeagueQuestionModal"
+            :questions="championsLeagueQuestions"
+            @close-modal="handleCloseModal"
+          />
+          <QuestionModal
+            v-if="isVisibleSerieAquestionModal"
+            :questions="serieAquestions"
+            @close-modal="handleCloseModal"
+          />
+          <QuestionModal
+            v-if="isVisiblePremierLeagueQuestionModal"
+            :questions="premierLeagueQuestions"
+            @close-modal="handleCloseModal"
+          />
+          <QuestionModal
+            v-if="isVisibleLaLigaQuestionModal"
+            :questions="laLigaQuestions"
+            @close-modal="handleCloseModal"
+          />
+          <QuestionModal
+            v-if="isVisibleBundesLigaQuestionModal"
+            :questions="bundesLigaQuestions"
+            @close-modal="handleCloseModal"
+          />
+          <QuestionModal
+            v-if="isVisibleLeague1QuestionModal"
+            :questions="league1Questions"
+            @close-modal="handleCloseModal"
+          />
+          <QuestionModal
+            v-if="isVisibleOthersQuestionModal"
+            :questions="othersQuestions"
+            @close-modal="handleCloseModal"
+          />
+          <QuestionCreateModal
+            v-if="isVisibleQuestionCreateModal"
+            @close-modal="handleCloseQuestionCreateModal"
+            @create-question="handleCreateQuestion"
+          />
+        </transition>
+      </div>
+    </template>
     <div class="text-center">
       <router-link
         :to="{ name: 'TopIndex' }"
