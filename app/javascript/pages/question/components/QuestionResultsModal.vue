@@ -104,7 +104,7 @@ export default {
       '%0a'
       +
       '&url='
-      +'https://salty-sands-43689.herokuapp.com/';
+      +'https://soccer-quiz.herokuapp.com/';
       window.open(shareURL, '_blank')
     },
   }

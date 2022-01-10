@@ -1,11 +1,11 @@
 <template>
   <div class="container mt-5 mb-5">
-    <h3 class="text-center mb-5">
+    <h3 class="text-center mb-5 text-white">
       クイズ選択画面
     </h3>
     <VueLoading
       type="bubbles"
-      color="#555"
+      color="#333"
       v-if="isLoading"
       class="loadingIcon"
       :size="{ width: '150px', height: '150px' }"
@@ -87,7 +87,7 @@
           @click="handleOpenLeague1QuestionModal"
         >
           <img
-            src="../../assets/league_1_logo.png"
+            src="../../assets/ligue_1_logo.png"
             class="card-img-top">
           <div class="card-body">
             <p class="card-text">
@@ -101,7 +101,7 @@
           @click="handleOpenOthersQuestionModal"
         >
           <img
-            src="../../assets/others.png"
+            src="../../assets/w_cup_logo.png"
             class="card-img-top">
           <div class="card-body">
             <p class="card-text">
@@ -115,7 +115,7 @@
           @click="handleShowQuestionCreateModal"
         >
           <img
-            src="../../assets/quiz.png"
+            src="../../assets/japonica_logo.png"
             class="card-img-top">
           <div class="card-body">
             <p class="card-text">
@@ -170,7 +170,7 @@
     <div class="text-center">
       <router-link
         :to="{ name: 'TopIndex' }"
-        class="btn btn-secondary shadow mt-5 col-4"
+        class="btn btn-dark shadow mt-5 col-4"
       >
         戻る
       </router-link>
@@ -250,7 +250,7 @@ export default {
       ]),
     twitterShare(){
         //シェアする画面を設定
-        var shareURL = 'https://twitter.com/intent/tweet?text=' + "欧州サッカークイズ" + "%20%23欧州サッカー" + "%20%23クイズ" + "%20%23サッカー" + '&url=' + "https://salty-sands-43689.herokuapp.com/";
+        var shareURL = 'https://twitter.com/intent/tweet?text=' + "欧州サッカークイズ" + "%20%23欧州サッカー" + "%20%23クイズ" + "%20%23サッカー" + '&url=' + "https://soccer-quiz.herokuapp.com/";
         //シェア用の画面へ移行
         window.open(shareURL, '_blank')
     },

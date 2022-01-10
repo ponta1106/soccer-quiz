@@ -10,7 +10,7 @@
           >
             <div class="modal-body d-flex flex-column justify-content-around p-2 m-2">
               <button
-                class="btn btn-secondary shadow p-2 m-2"
+                class="btn btn-dark shadow p-2 m-2"
                 @click="startFlg = true"
               >
                 クイズスタート
@@ -101,7 +101,7 @@
                 <div class="col-4">
                   <button
                     v-if="answered"
-                    class="btn btn-secondary shadow col-12"
+                    class="btn btn-dark shadow col-12"
                     @click="nextQuestion"
                   >
                     次へ

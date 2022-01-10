@@ -50,7 +50,7 @@
       <div class="col-12 mb-3">
         <button
           type="submit"
-          class="btn btn-secondary shadow col-12"
+          class="btn btn-dark shadow col-12"
           @click="handleSubmit(login)"
         >
           ログイン
@@ -71,7 +71,7 @@
         :to="{ name: 'RegisterIndex' }"
       >
         <button
-          class="btn shadow col-12"
+          class="btn btn-light shadow col-12"
         >
           はじめての方はこちら
         </button>

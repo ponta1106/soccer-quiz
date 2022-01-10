@@ -91,7 +91,7 @@
       <div class="col-12 mb-3">
         <button
           type="submit"
-          class="btn btn-secondary shadow col-12"
+          class="btn btn-dark shadow col-12"
           @click="handleSubmit(register)"
         >
           登録
@@ -103,7 +103,7 @@
         :to="{ name: 'LoginIndex' }"
       >
         <button
-          class="btn shadow col-12"
+          class="btn btn-light shadow col-12"
         >
           すでにアカウントをお持ちの方はこちら
         </button>

@@ -13,7 +13,7 @@
       <div class="m-2 p-2">
         <router-link
           :to="{ name: 'QuestionIndex' }"
-          class="btn btn-secondary shadow col-4"
+          class="btn btn-dark shadow col-4"
         >
           はじめる
         </router-link>
@@ -29,4 +29,12 @@ export default {
 </script>
 
 <style scoped>
+  h1 {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+
+  p {
+    font-weight: bold;
+  }
 </style>

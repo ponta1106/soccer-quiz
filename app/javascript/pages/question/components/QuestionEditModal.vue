@@ -177,7 +177,7 @@
             <div class="d-flex modal-footer justify-content-between mt-3">
               <div class="col-4">
                 <button
-                  class="btn btn-secondary shadow col-12"
+                  class="btn btn-dark shadow col-12"
                   @click="handleSubmit(handleUpdateQuestion)"
                 >
                   更新する

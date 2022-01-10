@@ -23,10 +23,12 @@ export default {
 
 <style>
   #app {
-    color: #555;
+    color: #333;
     min-height: 100vh;
     font-family: 'Kosugi Maru', sans-serif;
     background-color: #e5e2df;
+    background-image: url('assets/colorfull.png');
+    background-size: cover;
   }
 
   .fade-enter-active, .fade-leave-active {
