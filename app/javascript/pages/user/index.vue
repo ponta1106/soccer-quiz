@@ -214,7 +214,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters("users", ["authUser"]),
+    ...mapGetters('users', ['authUser']),
     ...mapGetters('questions', ['questions', 'isLoading']),
     isAuthUserQuestions() {
       return this.questions.filter(question => {

@@ -112,6 +112,22 @@
         <div
           class="card m-2"
           style="width: 18rem;"
+          v-if="authUser.name == 'ゲストユーザー'"
+          @click="handleShowUserRecomendModal"
+        >
+          <img
+            src="../../assets/japonica_logo.png"
+            class="card-img-top">
+          <div class="card-body">
+            <p class="card-text">
+              クイズを作成する
+            </p>
+          </div>
+        </div>
+        <div
+          class="card m-3"
+          style="width: 18rem;"
+          v-else
           @click="handleShowQuestionCreateModal"
         >
           <img
@@ -123,6 +139,7 @@
             </p>
           </div>
         </div>
+      </div>
         <transition name="fade">
           <QuestionModal
             v-if="isVisibleChampionsLeagueQuestionModal"
@@ -164,8 +181,11 @@
             @close-modal="handleCloseQuestionCreateModal"
             @create-question="handleCreateQuestion"
           />
+          <UserRecomendModal
+            v-if="isVisibleUserRecomendModal"
+            @close-modal="handleCloseUserRecomendModal"
+          />
         </transition>
-      </div>
     </template>
     <div class="text-center">
       <router-link
@@ -181,6 +201,7 @@
 <script>
 import QuestionModal from './components/QuestionModal.vue'
 import QuestionCreateModal from './components/QuestionCreateModal.vue'
+import UserRecomendModal from '../register/recomend.vue'
 import { mapGetters, mapActions } from 'vuex';
 import { VueLoading } from 'vue-loading-template'
 export default {
@@ -188,22 +209,25 @@ export default {
   components: {
     QuestionModal,
     QuestionCreateModal,
-    VueLoading
+    VueLoading,
+    UserRecomendModal
   },
   data() {
     return {
+      isVisibleUserRecomendModal: false,
       isVisibleSerieAquestionModal: false,
       isVisibleLaLigaQuestionModal: false,
       isVisibleOthersQuestionModal: false,
       isVisibleQuestionCreateModal: false,
-      isVisibleBundesLigaQuestionModal: false,
       isVisibleLeague1QuestionModal: false,
+      isVisibleBundesLigaQuestionModal: false,
       isVisiblePremierLeagueQuestionModal: false,
       isVisibleChampionsLeagueQuestionModal: false,
     }
   },
   computed: {
     ...mapGetters('questions', ['questions', 'isLoading']),
+    ...mapGetters('users', ['authUser']),
     championsLeagueQuestions() {
       return this.questions.filter(question => {
         return question.category == 'champions_league';
@@ -278,17 +302,23 @@ export default {
     handleShowQuestionCreateModal() {
       this.isVisibleQuestionCreateModal = true;
     },
+    handleShowUserRecomendModal() {
+      this.isVisibleUserRecomendModal = true;
+    },
     handleCloseModal() {
-      this.isVisibleChampionsLeagueQuestionModal = false;
       this.isVisibleSerieAquestionModal = false;
-      this.isVisiblePremierLeagueQuestionModal = false;
       this.isVisibleLaLigaQuestionModal = false;
-      this.isVisibleBundesLigaQuestionModal = false;
-      this.isVisibleLeague1QuestionModal = false;
       this.isVisibleOthersQuestionModal = false;
+      this.isVisibleLeague1QuestionModal = false;
+      this.isVisibleBundesLigaQuestionModal = false;
+      this.isVisiblePremierLeagueQuestionModal = false;
+      this.isVisibleChampionsLeagueQuestionModal = false;
     },
     handleCloseQuestionCreateModal() {
       this.isVisibleQuestionCreateModal = false;
+    },
+    handleCloseUserRecomendModal() {
+      this.isVisibleUserRecomendModal = false;
     },
     async handleCreateQuestion(question) {
       try{
