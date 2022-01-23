@@ -116,7 +116,7 @@
           @click="handleShowUserRecomendModal"
         >
           <img
-            src="../../assets/japonica_logo.png"
+            src="../../assets/new.png"
             class="card-img-top">
           <div class="card-body">
             <p class="card-text">
