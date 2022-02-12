@@ -2,30 +2,30 @@
   <footer
     class="mt-auto shadow"
   >
-    <div class="container d-flex">
-      <div class="terms-of-service">
-        <button
-          class="btn"
-          @click="openRules"
-        >
-          利用規約
-        </button>
-        <Rules
-          v-if="isVisibleRulesModal"
-          @close-modal="closeModal"
-        />
-        <button
-          class="btn"
-          @click="openPrivacyPolicy"
-        >
-          プライバシーポリシー
-        </button>
-        <PrivacyPolicy
-          v-if="isVisiblePrivacyPolicyModal"
-          @close-modal="closeModal"
-        />
-      </div>
+  <div class="container">
+    <div class="row">
+      <button
+        class="btn col-6"
+        @click="openRules"
+      >
+        利用規約
+      </button>
+      <Rules
+        v-if="isVisibleRulesModal"
+        @close-modal="closeModal"
+      />
+      <button
+        class="btn col-6"
+        @click="openPrivacyPolicy"
+      >
+        プライバシーポリシー
+      </button>
+      <PrivacyPolicy
+        v-if="isVisiblePrivacyPolicyModal"
+        @close-modal="closeModal"
+      />
     </div>
+  </div>
   </footer>
 </template>
 
@@ -58,9 +58,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-  .terms-of-service {
-    margin: 0 auto;
-  }
-</style>
