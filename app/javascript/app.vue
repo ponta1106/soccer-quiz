@@ -29,7 +29,6 @@ export default {
     background-color: #e5e2df;
     background-image: url('assets/colorfull.png');
     background-size: cover;
-    cursor: url('assets/finale.png'), auto;
   }
 
   .fade-enter-active, .fade-leave-active {
