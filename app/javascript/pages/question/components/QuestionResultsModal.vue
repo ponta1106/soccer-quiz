@@ -28,13 +28,13 @@
             </template>
           </div>
           <div class="modal-footer">
-          <button
-            class="btn btn-info text-white shadow col-5"
-            @click="twitterShare"
-          >
-            <font-awesome-icon :icon="['fab', 'twitter']"/>
-            シェアする
-          </button>
+            <button
+              class="btn btn-info text-white shadow col-5"
+              @click="twitterShare"
+            >
+              <font-awesome-icon :icon="['fab', 'twitter']" />
+              シェアする
+            </button>
             <button
               class="btn shadow col-4"
               @click="closeModal"

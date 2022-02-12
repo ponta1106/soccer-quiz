@@ -26,9 +26,9 @@
       {{ authUser.name }}さんが作成した問題一覧
     </div>
     <VueLoading
+      v-if="isLoading"
       type="spin"
       color="#333"
-      v-if="isLoading"
       class="loadingIcon"
       :size="{ width: '50px', height: '50px' }"
     />
@@ -42,8 +42,10 @@
         class="rounded bg-light shadow m-3 p-3"
       >
         <p
-         class="mb-4"
-        >{{ question.title }}</p>
+          class="mb-4"
+        >
+          {{ question.title }}
+        </p>
         <button
           v-if="authUser.name != 'ゲストユーザー'"
           class="btn btn-success col-6 col-sm-4"
@@ -61,8 +63,10 @@
         class="rounded bg-light shadow m-3 p-3"
       >
         <p
-         class="mb-4"
-        >{{ question.title }}</p>
+          class="mb-4"
+        >
+          {{ question.title }}
+        </p>
         <button
           v-if="authUser.name != 'ゲストユーザー'"
           class="btn btn-success col-6 col-sm-4"
@@ -80,8 +84,10 @@
         class="rounded bg-light shadow m-3 p-3"
       >
         <p
-         class="mb-4"
-        >{{ question.title }}</p>
+          class="mb-4"
+        >
+          {{ question.title }}
+        </p>
         <button
           v-if="authUser.name != 'ゲストユーザー'"
           class="btn btn-success col-6 col-sm-4"
@@ -99,8 +105,10 @@
         class="rounded bg-light shadow m-3 p-3"
       >
         <p
-         class="mb-4"
-        >{{ question.title }}</p>
+          class="mb-4"
+        >
+          {{ question.title }}
+        </p>
         <button
           v-if="authUser.name != 'ゲストユーザー'"
           class="btn btn-success col-6 col-sm-4"
@@ -118,8 +126,10 @@
         class="rounded bg-light shadow m-3 p-3"
       >
         <p
-         class="mb-4"
-        >{{ question.title }}</p>
+          class="mb-4"
+        >
+          {{ question.title }}
+        </p>
         <button
           v-if="authUser.name != 'ゲストユーザー'"
           class="btn btn-success col-6 col-sm-4"
@@ -137,8 +147,10 @@
         class="rounded bg-light shadow m-3 p-3"
       >
         <p
-         class="mb-4"
-        >{{ question.title }}</p>
+          class="mb-4"
+        >
+          {{ question.title }}
+        </p>
         <button
           v-if="authUser.name != 'ゲストユーザー'"
           class="btn btn-success col-6 col-sm-4"
@@ -156,8 +168,10 @@
         class="rounded bg-light shadow m-3 p-3"
       >
         <p
-         class="mb-4"
-        >{{ question.title }}</p>
+          class="mb-4"
+        >
+          {{ question.title }}
+        </p>
         <button
           v-if="authUser.name != 'ゲストユーザー'"
           class="btn btn-success col-6 col-sm-4"

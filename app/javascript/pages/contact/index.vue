@@ -2,7 +2,11 @@
   <div class="container text-center">
     <h3>お問合せ</h3>
     <div class="adimin-icon">
-      <img src="../../assets/turtle.png" alt="icon" width="200px;">
+      <img
+        src="../../assets/turtle.png"
+        alt="icon"
+        width="200px;"
+      >
     </div>
     <div class="message mb-5">
       <p>こんにちは、このサイトの管理人ぽんたです。</p>
@@ -13,7 +17,7 @@
         class="btn btn-info text-white shadow col-8 col-sm-4"
         @click="contactAdmin"
       >
-        <font-awesome-icon :icon="['fab', 'twitter']"/>
+        <font-awesome-icon :icon="['fab', 'twitter']" />
         管理人のTwitter
       </button>
     </div>
