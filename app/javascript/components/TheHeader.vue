@@ -8,10 +8,21 @@
         >
           欧州サッカークイズ
         </router-link>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon" />
         </button>
-        <div class="collapse navbar-collapse navbar-collapse collapse justify-content-end" id="navbarNav">
+        <div
+          id="navbarNav"
+          class="collapse navbar-collapse navbar-collapse collapse justify-content-end"
+        >
           <ul class="navbar-nav">
             <template v-if="!authUser">
               <li class="nav-item active">
@@ -49,15 +60,15 @@
                   ログアウト
                 </router-link>
               </li>
-          </template>
-          <li class="nav-item">
-            <router-link
-              :to="{ name: 'ContactIndex' }"
-              class="nav-link"
-            >
-              お問合せ
-            </router-link>
-          </li>
+            </template>
+            <li class="nav-item">
+              <router-link
+                :to="{ name: 'ContactIndex' }"
+                class="nav-link"
+              >
+                お問合せ
+              </router-link>
+            </li>
           </ul>
         </div>
       </div>

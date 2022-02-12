@@ -73,8 +73,7 @@
               </h2>
               <template
                 v-if="!correct_answer"
-              >
-              </template>
+              />
               <p class="p-3 m-2 bg-light">
                 {{ questions[currentQuestionIndex].explanation }}
               </p>

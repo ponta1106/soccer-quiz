@@ -11,7 +11,7 @@
           <div class="modal-body">
             <div class="container">
               <p>ユーザー登録するとクイズを作成できます。</p>
-                <router-link
+              <router-link
                 :to="{ name: 'RegisterIndex' }"
               >
                 <button
@@ -27,10 +27,10 @@
                 やめておく
               </button>
             </div>
-         </div>
-       </div>
-     </div>
-   </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="modal-backdrop show" />
   </div>
 </template>
