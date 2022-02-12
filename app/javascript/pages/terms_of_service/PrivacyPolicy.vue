@@ -100,7 +100,10 @@
               <p>本ポリシーに関するお問い合わせは，下記の窓口までお願いいたします。</p>
               <p>
                 Twitter：
-                <a href="https://twitter.com/@ponta_1106">
+                <a
+                  href="https://twitter.com/@ponta_1106"
+                  target="_blank"
+                >
                   @ponta_1106</a>
               </p>
               <p class="tR">
